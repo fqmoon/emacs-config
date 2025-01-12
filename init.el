@@ -18,6 +18,9 @@
  ;; If there is more than one, they won't work right.
  )
 
+(dolist (p '(orderless marginalia pyim-wbdict))
+	(package-install p))
+
 ;; open config file
 (defun open-init-file ()
   (interactive)
