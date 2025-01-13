@@ -1,9 +1,10 @@
 ;; modeline上显示按键和执行的命令
-(require 'keycast)
-(keycast-mode-line-mode t)
+(use-package keycast
+  :config
+  (keycast-mode-line-mode t))
 
 ;; vterm是一个终端模拟器，它需要编译，要在系统里安装libtool-bin
-;;(require vterm)
+(use-package vterm)
 
 ;; 禁止备份文件（后缀名为~）
 (setq make-backup-files nil)

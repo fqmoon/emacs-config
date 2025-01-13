@@ -12,7 +12,9 @@
 ;; 设置中英文字符宽度一致（可选）
 ;(setq face-font-rescale-alist '(("SimSun" . 1.2)))
 
-(require 'monokai-theme)
-(load-theme 'monokai 1)
+(use-package monokai-theme
+  :config
+  (load-theme 'monokai 1))
+
 
 (provide 'my-ui)

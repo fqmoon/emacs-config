@@ -1,4 +1,3 @@
-
 ;; input method
 (require 'popup)
 (setq pyim-page-tooltip 'popup)
