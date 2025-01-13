@@ -1,5 +1,6 @@
 ;; line number
-(global-linum-mode 1)
+;;(global-linum-mode 1)
+(global-display-line-numbers-mode 1)
 ;; 光标（cursor）样式
 (setq-default cursor-type 'bar)
 ;; 显示配对括号
