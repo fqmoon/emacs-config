@@ -5,3 +5,7 @@ pyim/
 eln-cache/
 history
 url/
+/.DS_Store
+/.cache/
+/projectile-bookmarks.eld
+/projects

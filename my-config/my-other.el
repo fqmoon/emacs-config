@@ -15,8 +15,22 @@
 ;; 加载修改后文件在Emcas中被称为revert
 (global-auto-revert-mode 1)
 
-;; 鼠标滚轮
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+;;;; 鼠标滚轮相关
+;; 滚轮速度
+;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+;; 水平滚动
+(setq mouse-wheel-tilt-scroll t)
+;; 水平滚动反向（自然滚动）
+(setq mouse-wheel-flip-direction t)
+;; 关闭滚轮加速实测不关更好用）
 ;(setq mouse-wheel-progressive-speed nil)
+
+;; 记录命令历史
+(use-package savehist
+  :hook (after-init . savehist-mode)
+  :config (savehist-mode t))
+
+;; 重启功能
+(use-package restart-emacs)
 
 (provide 'my-other)

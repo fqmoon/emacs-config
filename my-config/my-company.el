@@ -22,10 +22,4 @@
   :config
   (global-set-key (kbd "C-;") 'embark-act))
 
-;; 记录命令历史
-(use-package savehist
-  :ensure nil
-  :hook (after-init . savehist-mode)
-  :config (savehist-mode t))
-
 (provide 'my-company)

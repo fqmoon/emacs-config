@@ -1,7 +1,10 @@
+;; 环境：Emacs-29.1
+
 ;; 配置源
 (require 'package)
 (setq package-archives '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-			 ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+			 ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+			 ("melpa-stable" . "https://stable.melpa.org/packages/")))
 (package-initialize)
 
 ;; 总是自动安装所有包
@@ -13,7 +16,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(monokai-theme vterm embark-consult keycast popup pyim consult vertico company magit)))
+   '(treesit restart-emacs centaur-tabs buffer-tabs markdown-mode monokai-theme vterm embark-consult keycast consult)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -21,14 +24,17 @@
  ;; If there is more than one, they won't work right.
  )
 
-(dolist (p '(orderless marginalia pyim-wbdict))
-	(package-install p))
-
 ;; open config file
-(defun open-init-file ()
+(defun edit-my-config ()
   (interactive)
   (find-file "~/.emacs.d/init.el"))
-(global-set-key (kbd "<f2>") 'open-init-file)
+;;(global-set-key (kbd "<f2>") 'open-init-file)
+
+;; print OS type
+(message "Your system type is %s." system-type)
+;; check Emacs version
+(if (version< emacs-version "29.1")
+    (message "WARN: Emacs version is lower than 29.1 !"))
 
 ;; my configs
 (add-to-list 'load-path (expand-file-name "my-config" user-emacs-directory))
@@ -38,10 +44,12 @@
 (require 'my-input-method)
 (require 'my-other)
 (require 'my-search)
+(require 'my-proj)
+(require 'my-prog)
 
+(use-package magit
+  :defer t)
 
-;; fix magit
-;; https://github.com/magit/magit/issues/5011
-(defun seq-keep (function sequence)
-  "Apply FUNCTION to SEQUENCE and return the list of all the non-nil results."
-  (delq nil (seq-map function sequence)))
+;; https://jblevins.org/projects/markdown-mode/
+(use-package markdown-mode
+  :pin "melpa-stable")
