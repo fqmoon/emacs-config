@@ -29,6 +29,7 @@
 
 ;; my configs
 (add-to-list 'load-path (expand-file-name "my-config" user-emacs-directory))
+(require 'my-keyboard)
 (require 'my-ui)
 (require 'my-company)
 (require 'my-input-method)
