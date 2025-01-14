@@ -34,9 +34,9 @@
   (centaur-tabs-group-by-projectile-project) ; 按项目显示buffer
   (setq centaur-tabs-cycle-scope 'tabs)	     ; 仅在当前可见组内部切换标签页，不跨组
   (centaur-tabs-change-fonts "arial" 120)    ; font size & height
-  ;; :bind
-  ;; ("C-<prior>" . centaur-tabs-backward)
-  ;; ("C-<next>" . centaur-tabs-forward)
+  :bind
+  ("C-M-[" . centaur-tabs-backward)
+  ("C-M-]" . centaur-tabs-forward)
   )
 
 ;; 显示水平滚动条

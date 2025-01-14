@@ -6,6 +6,8 @@
 ;; vterm是一个终端模拟器，它需要编译，要在系统里安装libtool-bin
 (use-package vterm)
 
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+
 ;; 禁止备份文件（后缀名为~）
 (setq make-backup-files nil)
 ;; 禁止自动保存
@@ -35,10 +37,14 @@
 ;; 打开文件历史
 (use-package recentf
   :config
-  (setq recentf-max-saved-items 100) 	; 最多100个最近文件记录
+  (setq recentf-max-saved-items 500) 	; 最多xxx个最近文件记录
   (recentf-mode t))
 
 ;; 重启功能
 (use-package restart-emacs)
+
+;; 跳转到引用
+;; M-? 被macOS占用
+(global-set-key (kbd "C-c r") 'xref-find-references)
 
 (provide 'my-other)
