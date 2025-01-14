@@ -32,6 +32,12 @@
   :hook (after-init . savehist-mode)
   :config (savehist-mode t))
 
+;; 打开文件历史
+(use-package recentf
+  :config
+  (setq recentf-max-saved-items 100) 	; 最多100个最近文件记录
+  (recentf-mode t))
+
 ;; 重启功能
 (use-package restart-emacs)
 

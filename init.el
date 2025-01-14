@@ -17,7 +17,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(subed perspective which-key treesit restart-emacs centaur-tabs buffer-tabs markdown-mode monokai-theme vterm embark-consult keycast consult)))
+   '(consult-projectile ripgrep subed perspective which-key treesit restart-emacs centaur-tabs buffer-tabs markdown-mode monokai-theme vterm embark-consult keycast consult)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
