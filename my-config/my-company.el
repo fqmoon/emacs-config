@@ -22,4 +22,18 @@
   :config
   (global-set-key (kbd "C-;") 'embark-act))
 
+;; Emacs-30已经内置
+;; 可以提示组合命令键
+(use-package which-key
+  ;;:defer t
+  :config
+  (which-key-mode t))
+
+(use-package avy
+  :bind
+  (("C-j" . avy-goto-char-timer))
+  :config
+  (setq avy-background t)
+  )
+
 (provide 'my-company)
