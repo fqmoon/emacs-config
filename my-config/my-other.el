@@ -16,7 +16,8 @@
 (global-auto-revert-mode 1)
 
 ;;;; 鼠标滚轮相关
-;; TODO 像素级滚动支持
+;; Emacs-29支持像素级滚动，不再停止在字符的开头
+(setq pixel-scroll-precision-mode t)
 ;; 滚轮速度
 ;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
 ;; 水平滚动
