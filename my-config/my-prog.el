@@ -1,24 +1,27 @@
 ;; 编程用的配置
 (add-hook 'prog-mode-hook
-	  '(lambda ()
+	  #'(lambda ()
 	     (setq truncate-lines t)
 	     (setq word-wrap nil)))
 
 ;; eglot是Emacs-29内置的语言服务器
 (use-package eglot
-  :hook (prog-mode . eglot-ensure)
+  :hook ((js-ts-mode . eglot-ensure)
+	 (python-ts-mode . eglot-ensure))
   )
 
-;; ;; treesit
-;; ;; 我用(tree
-;; (use-package treesit
-;;   :init
-;;   (setq treesit-language-source-alist
-;; 	'((css . ("https://github.com/tree-sitter/tree-sitter-css"))
-;; 	  (c . ("https://github.com/tree-sitter/tree-sitter-c"))
-;; 	  (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript"))
-;; 	  (cpp . ("https://github.com/tree-sitter/tree-sitter-cpp"))
-;; 	  (python . ("https://github.com/tree-sitter/tree-sitter-python"))))
-;;   :config (setq treesit-font-lock-level 4))
+;; 显示列号
+;;(add-hook 'prog-mode-hook 'column-number-mode)
+;; 代码折叠
+(add-hook 'prog-mode-hook 'hs-minor-mode)
+
+;; 代码错误检查
+(use-package flymake
+  :hook (prog-mode . flymake-mode)
+  :config
+  (global-set-key (kbd "M-n") 'flymake-goto-next-error)
+  (global-set-key (kbd "M-p") 'flymake-goto-prev-error))
+
+(require 'my-prog-treesit)
 
 (provide 'my-prog)
