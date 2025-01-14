@@ -1,11 +1,4 @@
-auto-save-list/
-elpa/
-transient/
-pyim/
-eln-cache/
-history
-url/
-/.DS_Store
-/.cache/
-/projectile-bookmarks.eld
-/projects
+/*
+
+!init.el
+!/my-config/
