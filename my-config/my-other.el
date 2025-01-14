@@ -1,7 +1,7 @@
 ;; modeline上显示按键和执行的命令
-(use-package keycast
-  :config
-  (keycast-mode-line-mode t))
+;; (use-package keycast
+;;   :config
+;;   (keycast-mode-line-mode t))
 
 ;; vterm是一个终端模拟器，它需要编译，要在系统里安装libtool-bin
 (use-package vterm)
@@ -16,6 +16,7 @@
 (global-auto-revert-mode 1)
 
 ;;;; 鼠标滚轮相关
+;; TODO 像素级滚动支持
 ;; 滚轮速度
 ;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
 ;; 水平滚动
