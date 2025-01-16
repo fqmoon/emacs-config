@@ -1,10 +1,11 @@
 ;;; treesit在29版本已经内置，但是需要配置源才能用
 
-(when (treesit-available-p)
-  ;; 安装语法的函数
-  (defun install-lang (lang)
-    (if (not (treesit-language-available-p lang))
-	(treesit-install-language-grammar lang)))
+(use-package treesit
+  :ensure nil
+  :defer nil
+  :when (treesit-available-p)
+;;  :hook (after-init-hook . treesit-mode)
+  :config
   ;; 配置
   (setq treesit-font-lock-level 4)
   ;; 配置语法源
@@ -41,7 +42,14 @@
 	  (yaml       . ("https://github.com/ikatyang/tree-sitter-yaml"))
 	  (toml       . ("https://github.com/tree-sitter/tree-sitter-toml"))
 	  (zig        . ("https://github.com/GrayJack/tree-sitter-zig"))))
-  ;; 安装源
+  ;; 安装语法的函数
+  (defun install-lang (lang)
+    (if (not (treesit-language-available-p lang))
+	(with-proxy
+	  :http-server "127.0.0.1:10810"
+	  :no-proxy ("localhost" "127.0.0.1" "192.168.*" "10.*")
+	  (treesit-install-language-grammar lang))))
+  ;; 安装语法
   (install-lang 'typescript)
   (install-lang 'javascript)
   (install-lang 'markdown)
