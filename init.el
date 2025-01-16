@@ -7,9 +7,14 @@
 			 ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
 			 ("melpa-stable" . "https://stable.melpa.org/packages/")))
 (package-initialize)
-
 ;; 总是自动安装所有包
 (setq use-package-always-ensure t)
+
+;; 代理
+(use-package with-proxy)
+
+;; straight.el包管理器配置
+;;(require 'my-straight)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -17,7 +22,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(consult-projectile ripgrep subed perspective which-key treesit restart-emacs centaur-tabs buffer-tabs markdown-mode monokai-theme vterm embark-consult keycast consult)))
+   '(org-mode with-proxy consult-projectile ripgrep subed perspective which-key treesit restart-emacs centaur-tabs buffer-tabs markdown-mode monokai-theme vterm embark-consult keycast consult)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -41,8 +46,8 @@
   :defer t)
 
 ;; https://jblevins.org/projects/markdown-mode/
-(use-package markdown-mode
-  :pin "melpa-stable")
+(use-package markdown-mode)
+;;  :straight t)
 
 ;; my configs
 (add-to-list 'load-path (expand-file-name "my-config" user-emacs-directory))

@@ -15,5 +15,8 @@
 (setq mac-right-option-modifier 'control)
 ;; 我其实更想把右shift改为右ctrl的，但似乎没有那么容易
 
+;; macOS中，option键默认是A，即Alt
+;; 需要映射成Super吗
+
 (provide 'my-keyboard)
 ;;; my-keyboard.el ends here
