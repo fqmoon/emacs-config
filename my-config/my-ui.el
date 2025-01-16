@@ -35,8 +35,12 @@
   (setq centaur-tabs-cycle-scope 'tabs)	     ; 仅在当前可见组内部切换标签页，不跨组
   (centaur-tabs-change-fonts "arial" 120)    ; font size & height
   :bind
-  ("C-M-[" . centaur-tabs-backward)
-  ("C-M-]" . centaur-tabs-forward)
+  ;; "C-M-["不可被映射，因为组合键C-[等同于按住ESC，按不出来的
+  ;; 按一下 C-[ 等同于按一下esc，也等同于按住 Meta
+  ;; 也可以用 ESC [ 按出来
+  ("M-[" . centaur-tabs-backward)
+  ;; 也可以用 ESC ] 按出来
+  ("M-]" . centaur-tabs-forward)
   )
 
 ;; 显示水平滚动条
