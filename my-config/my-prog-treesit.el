@@ -45,6 +45,7 @@
   ;; 安装语法的函数
   (defun install-lang (lang)
     (if (not (treesit-language-available-p lang))
+	;; TODO 写成宏
 	(with-proxy
 	  :http-server "127.0.0.1:10810"
 	  :no-proxy ("localhost" "127.0.0.1" "192.168.*" "10.*")

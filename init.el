@@ -1,4 +1,4 @@
-;; 环境：Emacs-29.1
+;; 环境：Emacs 29.4-1
 
 ;; 配置源
 (require 'package)

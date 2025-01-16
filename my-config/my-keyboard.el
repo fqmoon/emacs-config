@@ -4,10 +4,10 @@
 
 ;;; Code:
 
-;; 默认情况下在macOS上，option键是super，而cmd是meta
-;; 虽然键位变成WIN键位了，但不符合macOS的传统，交换过来
-;;(setq mac-option-modifier 'meta
-;;      mac-command-modifier 'super)
+;; 使在macOS上，option键是Super，而cmd是Meta
+;; 这样才和Windows键位一致
+(setq mac-option-modifier 'super
+     mac-command-modifier 'meta)
 ;; 没有启用，因为键位位置更重要，而非功能
 
 ;; MacBook没有右ctrl键，只有右option键
