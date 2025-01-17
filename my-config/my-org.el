@@ -17,9 +17,6 @@
   :hook ((org-mode . fq-org-config))
   :bind (
 	 :map org-mode-map
-	 ("C-j" . avy-goto-char-timer))
-  :config
-  ;; point在行内时起headline
-  (setq org-M-RET-may-split-line nil))
+	 ("C-j" . avy-goto-char-timer)))
 
 (provide 'my-org)
