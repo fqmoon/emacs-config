@@ -6,9 +6,8 @@
 
 ;; 使在macOS上，option键是Super，而cmd是Meta
 ;; 这样才和Windows键位一致
-(setq mac-option-modifier 'super
-     mac-command-modifier 'meta)
-;; 没有启用，因为键位位置更重要，而非功能
+;; (setq mac-option-modifier 'super
+;;      mac-command-modifier 'meta)
 
 ;; MacBook没有右ctrl键，只有右option键
 ;; Emacs大量的命令都是要用ctrl键的，将右option改成右ctrl
