@@ -6,9 +6,9 @@
 ;; 一些命令可以按最后一个键以重复
 ;; 比如切换buffer可以C-x <leaf> <leaf> <leaf> ...
 ;; 切换windows可以C-o o o o ...
-(use-package repeat
-  :ensure nil
-  :hook (after-init . repeat-mode))
+;; (use-package repeat
+;;   :ensure nil
+;;   :hook (after-init . repeat-mode))
 
 ;; vterm是一个终端模拟器，它需要编译，要在系统里安装libtool-bin
 (use-package vterm)
