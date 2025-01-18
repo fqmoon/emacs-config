@@ -33,8 +33,12 @@
 ;; open config file
 (defun edit-my-config ()
   (interactive)
+  ;; TODO FIX
   (find-file "~/.emacs.d/init.el"))
 ;;(global-set-key (kbd "<f2>") 'open-init-file)
+
+;; TODO 光标跳转包
+;; TODO org中粘贴剪贴板图像 —— org-download
 
 ;; print OS type
 (message "Your system type is %s." system-type)
