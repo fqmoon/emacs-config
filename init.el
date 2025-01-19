@@ -31,12 +31,10 @@
  )
 
 ;; open config file
-(defun edit-my-config ()
+(defun open-my-config ()
   (interactive)
-  ;; TODO FIX
-  (find-file "~/.emacs.d/init.el"))
+  (find-file user-init-file))
 ;;(global-set-key (kbd "<f2>") 'open-init-file)
-
 ;; TODO 光标跳转包
 ;; TODO org中粘贴剪贴板图像 —— org-download
 
