@@ -1,5 +1,3 @@
-(use-package ripgrep)
-
 ;; 项目管理
 (use-package projectile
   :ensure t

@@ -45,9 +45,6 @@
   (setq recentf-max-saved-items 500) 	; 最多xxx个最近文件记录
   (recentf-mode t))
 
-;; 重启功能
-(use-package restart-emacs)
-
 ;; 跳转到引用
 ;; M-? 被macOS占用
 (global-set-key (kbd "C-c r") 'xref-find-references)

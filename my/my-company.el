@@ -29,7 +29,7 @@
 ;; Emacs-30已经内置
 ;; 可以提示组合命令键
 (use-package which-key
-  :ensure nil
+  :ensure t
   :config
   (which-key-mode t))
 

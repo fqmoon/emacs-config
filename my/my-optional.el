@@ -9,4 +9,7 @@
 ;; 字幕编辑，支持.srt按时间排序
 (use-package subed)
 
+;; 重启功能
+(use-package restart-emacs)
+
 (provide 'my-optional)

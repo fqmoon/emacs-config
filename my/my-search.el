@@ -1,3 +1,6 @@
+(use-package ripgrep
+  :ensure t)
+
 ;; search tool
 (use-package consult
   :ensure t
