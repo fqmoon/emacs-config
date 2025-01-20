@@ -14,8 +14,9 @@
 ;(setq face-font-rescale-alist '(("SimSun" . 1.2)))
 
 (use-package monokai-theme
+  :ensure t
   :config
-  (load-theme 'monokai 1))
+  (load-theme 'monokai t))
 
 ;; 标签页
 ;; (use-package tab-bar

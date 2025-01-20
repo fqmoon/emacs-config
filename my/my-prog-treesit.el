@@ -4,7 +4,7 @@
   :ensure nil
   :defer nil
   :when (treesit-available-p)
-;;  :hook (after-init-hook . treesit-mode)
+  ;;  :hook (after-init-hook . treesit-mode)
   :config
   ;; 配置
   (setq treesit-font-lock-level 4)
@@ -42,6 +42,10 @@
 	  (yaml       . ("https://github.com/ikatyang/tree-sitter-yaml"))
 	  (toml       . ("https://github.com/tree-sitter/tree-sitter-toml"))
 	  (zig        . ("https://github.com/GrayJack/tree-sitter-zig"))))
+  ;; 代理包
+  (use-package with-proxy
+    :ensure t)
+  ;; TOOD 代理应该可从外部配置
   ;; 安装语法的函数
   (defun install-lang (lang)
     (if (not (treesit-language-available-p lang))
