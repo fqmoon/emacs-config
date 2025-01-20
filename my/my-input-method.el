@@ -1,8 +1,10 @@
 ;; 内置输入法
 (use-package pyim
   :ensure t
-  :config
+  :bind (("M-j" . toggle-input-method))
+  :init
   (setq default-input-method "pyim")
+  :config
   (pyim-isearch-mode 1)			; 在isearch命令中可以用拼音首字母搜索
   ;; 输入法能够跟随弹窗
   (use-package popup
