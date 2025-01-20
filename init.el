@@ -41,6 +41,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("8dbbcb2b7ea7e7466ef575b60a92078359ac260c91fe908685b3983ab8e20e3f" default))
  '(package-selected-packages
    '(magit with-proxy monokai-theme subed pangu-spacing projectile ripgrep embark-consult consult restart-emacs vterm pyim-wbdict popup pyim avy which-key embark marginalia orderless vertico company)))
 (custom-set-faces
