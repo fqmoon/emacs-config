@@ -43,16 +43,19 @@
 	  (zig        . ("https://github.com/GrayJack/tree-sitter-zig"))))
   ;; 代理包
   (use-package with-proxy
-    :ensure t)
-  ;; TOOD 代理应该可从外部配置
+    :ensure t
+    :config
+    (let ((proxy-server (read-string
+			 "输入代理地址："
+			 "127.0.0.1:10810")))
+      (setq with-proxy-http-server proxy-server)
+      (setq with-proxy-no-proxy '("localhost" "127.0.0.1" "192.168.*" "10.*"))))
   ;; 安装语法的函数
   (defun install-lang (lang)
     (if (not (treesit-language-available-p lang))
-	;; TODO 写成宏
 	(with-proxy
-	  :http-server "127.0.0.1:10810"
-	  :no-proxy ("localhost" "127.0.0.1" "192.168.*" "10.*")
-	  (treesit-install-language-grammar lang))))
+	 (treesit-install-language-grammar lang))
+      ))
   ;; 安装语法
   (install-lang 'typescript)
   (install-lang 'javascript)
