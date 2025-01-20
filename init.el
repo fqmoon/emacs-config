@@ -32,10 +32,11 @@
 
 ;; open config file
 (defun open-my-config ()
+  "打开配置文件."
   (interactive)
   (find-file user-init-file))
 ;;(global-set-key (kbd "<f2>") 'open-init-file)
-;; TODO 光标跳转包
+;; TODO 光标跳转功能包
 ;; TODO org中粘贴剪贴板图像 —— org-download
 
 ;; print OS type
