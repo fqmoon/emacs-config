@@ -2,6 +2,7 @@
 
 ;; 项目管理
 (use-package projectile
+  :ensure t
   :init
   (setq projectile-project-search-path '("~/Developer/" "~/.emacs.d/"))
   :config

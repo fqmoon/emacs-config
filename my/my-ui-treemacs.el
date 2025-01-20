@@ -1,7 +1,7 @@
 ;; Treemacs是一个类似于VSCODE里的文件目录侧边栏
 ;; 能与Projectile集成
 (use-package treemacs
-  :ensure t
+  :ensure nil
   :defer t
   :init
   (with-eval-after-load 'winum

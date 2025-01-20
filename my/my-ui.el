@@ -29,7 +29,7 @@
 ;; 类似于VSCODE的标签页
 (use-package centaur-tabs
   ;;:pin "melpa-stable"
-  :demand
+  :ensure t
   :config
   (centaur-tabs-mode t)
   (centaur-tabs-group-by-projectile-project) ; 按项目显示buffer

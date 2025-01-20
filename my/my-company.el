@@ -6,30 +6,35 @@
 
 ;; minibuffer company
 (use-package vertico
+  :ensure t
   :config
   (vertico-mode t))
 ;; 在匹配命令时，可以无序匹配
 (use-package orderless
+  :ensure t
   :config
   (setq completion-styles '(orderless)))
 ;; 给命令添加边注（注释在右侧）
 (use-package marginalia
+  :ensure t
   :config
   (marginalia-mode t))
 
 ;; 类似于鼠标右键菜单，一个上下文语境的命令
 (use-package embark
+  :ensure t
   :config
   (global-set-key (kbd "C-;") 'embark-act))
 
 ;; Emacs-30已经内置
 ;; 可以提示组合命令键
 (use-package which-key
-  ;;:defer t
+  :ensure nil
   :config
   (which-key-mode t))
 
 (use-package avy
+  :ensure t
   :bind
   (("C-j" . avy-goto-char-timer))
   :config

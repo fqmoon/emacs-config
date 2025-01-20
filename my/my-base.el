@@ -9,6 +9,7 @@
 
 ;; git version control
 (use-package magit
+  :ensure t
   :defer t)
 
 (provide 'my-base)

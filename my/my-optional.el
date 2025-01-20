@@ -1,5 +1,8 @@
 ;;; 可选包
 
+;; vterm是一个终端模拟器，它需要编译，要在系统里安装libtool-bin
+(use-package vterm)
+
 ;; https://jblevins.org/projects/markdown-mode/
 (use-package markdown-mode)
 

@@ -10,8 +10,6 @@
 ;;   :ensure nil
 ;;   :hook (after-init . repeat-mode))
 
-;; vterm是一个终端模拟器，它需要编译，要在系统里安装libtool-bin
-(use-package vterm)
 
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 

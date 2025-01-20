@@ -1,5 +1,6 @@
 ;; 内置输入法
 (use-package pyim
+  :ensure nil
   :config
   (setq default-input-method "pyim")
   (pyim-isearch-mode 1)			; 在isearch命令中可以用拼音首字母搜索

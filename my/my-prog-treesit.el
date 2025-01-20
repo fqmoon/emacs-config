@@ -2,7 +2,6 @@
 
 (use-package treesit
   :ensure nil
-  :defer nil
   :when (treesit-available-p)
   ;;  :hook (after-init-hook . treesit-mode)
   :config
