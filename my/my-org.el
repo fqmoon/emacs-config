@@ -17,6 +17,9 @@
   :defer t
   :hook ((org-mode . fq-org-config))
   :bind (
+	 ("C-c l" . #'org-store-link)
+	 ("C-c a" . #'org-agenda)
+	 ("C-c c" . #'org-capture)
 	 :map org-mode-map
 	 ("C-j" . avy-goto-char-timer)))
 
