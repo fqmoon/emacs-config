@@ -42,20 +42,24 @@
 	  (toml       . ("https://github.com/tree-sitter/tree-sitter-toml"))
 	  (zig        . ("https://github.com/GrayJack/tree-sitter-zig"))))
   ;; 代理包
+  (defvar my/with-proxy-inited nil)
   (use-package with-proxy
     :ensure t
     :config
-    (let ((proxy-server (read-string
-			 "输入代理地址："
-			 "127.0.0.1:10810")))
-      (setq with-proxy-http-server proxy-server)
-      (setq with-proxy-no-proxy '("localhost" "127.0.0.1" "192.168.*" "10.*"))))
+    (defun my/init-with-proxy ()
+      (let ((proxy-server (read-string
+			   "输入代理地址："
+			   "127.0.0.1:10810")))
+	(setq with-proxy-http-server proxy-server)
+	(setq with-proxy-no-proxy '("localhost" "127.0.0.1" "192.168.*" "10.*")))))
   ;; 安装语法的函数
   (defun install-lang (lang)
-    (if (not (treesit-language-available-p lang))
-	(with-proxy
-	 (treesit-install-language-grammar lang))
-      ))
+    (when (not (treesit-language-available-p lang))
+      (when (not my/with-proxy-inited)
+	(my/init-with-proxy)
+	(setq my/with-proxy-inited t))
+      (with-proxy
+	(treesit-install-language-grammar lang))))
   ;; 安装语法
   (install-lang 'typescript)
   (install-lang 'javascript)
