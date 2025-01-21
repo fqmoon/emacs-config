@@ -63,7 +63,7 @@
   ;; 安装语法
   (install-lang 'typescript)
   (install-lang 'javascript)
-  (install-lang 'markdown)
+  ;; (install-lang 'markdown)
   ;; hook
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
   (add-to-list 'auto-mode-alist '("\\.d\\.ts\\'" . typescript-ts-mode))
