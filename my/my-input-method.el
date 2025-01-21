@@ -1,7 +1,8 @@
 ;; 内置输入法
 (use-package pyim
   :ensure t
-  ;;:hook ((after-init-hook . pyim-isearch-mode))
+  ;; 启动后1秒加载，这样才可以按输入法进行搜索
+  :defer 1
   :bind (("M-j" . toggle-input-method))
   :init
   (setq default-input-method "pyim")
