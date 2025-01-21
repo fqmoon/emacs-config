@@ -14,7 +14,9 @@
 	 ("C-x C-r" . consult-recent-file)
 	 ("M-s L" . consult-line-multi)	; 跨buffer搜索
 	 ;; 项目级字符串搜索
-	 ("C-S-s" . consult-ripgrep))
+	 ("C-S-s" . consult-ripgrep)
+	 :map project-prefix-map
+	 ("f" . consult-fd))
   ;; Enable automatic preview at point in the *Completions* buffer. This is
   ;; relevant when you use the default completion UI.
   :hook (completion-list-mode . consult-preview-at-point-mode)
@@ -33,7 +35,7 @@
         xref-show-definitions-function #'consult-xref)
   
   :config
-  ;; 预览功能配置
+  ;; 预览功能配置，这里主要是添加了一个延迟，防止大文件预览卡住
   (consult-customize
    consult-theme :preview-key '(:debounce 0.2 any)
    consult-ripgrep consult-git-grep consult-grep consult-man
@@ -46,10 +48,6 @@
   ;; narrow-key 可以过滤结果，和一些过滤标记组合使用。
   ;; 在匹配时，输入该key再选择类型即可过滤
   (setq consult-narrow-key "<") ;; "C-+"
-  
-  ;; 在安装了consult之后，consult-line命令就可以不只匹配一行的开头了
-  (use-package embark-consult
-    :ensure t
-    :bind (("C-s" . 'consult-line))))
+  )
 
 (provide 'my-search)
