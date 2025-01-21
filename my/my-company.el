@@ -36,9 +36,8 @@
 (use-package avy
   :ensure t
   :bind
-  (("C-j" . avy-goto-char-timer))
+  (("C-j" . avy-goto-char-2))
   :config
-  (setq avy-background t)
-  )
+  (setq avy-background t))
 
 (provide 'my-company)

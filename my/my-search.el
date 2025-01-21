@@ -4,7 +4,8 @@
 ;; search tool
 (use-package consult
   :ensure t
-  :bind (
+  :bind (("M-g i" . 'consult-imenu)
+	 ("C-x b" . 'consult-buffer)
 	 ("C-x C-r" . 'consult-recent-file)
 	 ;; 项目级字符串搜索
 	 ("C-S-s" . 'consult-ripgrep))

@@ -1,7 +1,7 @@
 ;; 内置输入法
 (use-package pyim
   :ensure t
-  :defer t
+  ;;:hook ((after-init-hook . pyim-isearch-mode))
   :bind (("M-j" . toggle-input-method))
   :init
   (setq default-input-method "pyim")
@@ -28,7 +28,12 @@
     (let ((result (funcall orig-func component)))
       (pyim-cregexp-build result)))
   (advice-add 'orderless-regexp :around #'my-orderless-regexp)
-
+  ;; 让 avy 支持拼音搜索
+  (with-eval-after-load 'avy
+    (defun my-avy--regex-candidates (fun regex &optional beg end pred group)
+      (let ((regex (pyim-cregexp-build regex)))
+	(funcall fun regex beg end pred group)))
+    (advice-add 'avy--regex-candidates :around #'my-avy--regex-candidates))
   )
 
 
