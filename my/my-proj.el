@@ -5,24 +5,17 @@
   :group 'project)
 
 (defun project-root-p (path)
-  "判断是否是一个路径是项目根目录."
+  "判断 PATH 是否是一个路径是项目根目录."
   (catch 'found
     (dolist (marker project-root-markers)
       (when (file-exists-p (concat path marker))
 	(throw 'found marker)))))
 
+;; https://andreyor.st/posts/2022-07-16-project-el-enhancements/
 (defun project-find-root (path)
-  "搜索项目根目录."
+  "根据 PATH 搜索项目根目录."
   (when-let ((root (locate-dominating-file path #'project-root-p)))
     (cons 'transient root)))
-
-(defun my/project-try-local (dir)
-  "Determine if DIR is a non-Git project."
-  (catch 'found
-    (let ((pr-flags '(".project")))
-      (dolist (f pr-flags)
-	(when-let ((root (locate-dominating-file dir f)))
-          (throw 'found (cons 'transient root)))))))
 
 (use-package project
   :ensure nil
