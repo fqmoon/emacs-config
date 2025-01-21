@@ -1,18 +1,33 @@
-;; 项目管理
-(use-package projectile
-  :ensure t
-  :init
-  (setq projectile-project-search-path '("~/Developer/" "~/.emacs.d/"))
+(defcustom project-root-markers
+  '(".project")
+  "标记项目的文件."
+  :type '(repeat string)
+  :group 'project)
+
+(defun project-root-p (path)
+  "判断是否是一个路径是项目根目录."
+  (catch 'found
+    (dolist (marker project-root-markers)
+      (when (file-exists-p (concat path marker))
+	(throw 'found marker)))))
+
+(defun project-find-root (path)
+  "搜索项目根目录."
+  (when-let ((root (locate-dominating-file path #'project-root-p)))
+    (cons 'transient root)))
+
+(defun my/project-try-local (dir)
+  "Determine if DIR is a non-Git project."
+  (catch 'found
+    (let ((pr-flags '(".project")))
+      (dolist (f pr-flags)
+	(when-let ((root (locate-dominating-file dir f)))
+          (throw 'found (cons 'transient root)))))))
+
+(use-package project
+  :ensure nil
   :config
-  ;; 使consult的grep相关搜索能正确基于项目根目录
-  ;; 当然这需要projectile能正确识别到项目目录
-  (autoload 'projectile-project-root "projectile")
-  (setq consult-project-function (lambda (_) (projectile-project-root)))
-  ;; 项目最近文件
-  ;; (global-set-key (kbd "C-x p r") 'consult-projectile-recentf)
-  
-  (projectile-mode t)
-  )
+  (add-to-list 'project-find-functions #'project-find-root))
 
 ;; ;; 工作区
 ;; (use-package perspective
