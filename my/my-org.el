@@ -30,15 +30,25 @@
 			       (expand-file-name "todo/" org-directory)
 			       (expand-file-name "notes/" org-directory)
 			       (expand-file-name "journal/" org-directory)))
+  ;; 参考：https://www.zmonster.me/2018/02/28/org-mode-capture.html
+  ;; 模板中替代词：
+  ;; - %U 未激活时间
+  ;; - %a 源链接
+  ;; - %i 选中内容
+  ;; - %? 最终光标停留位置
   (setq org-capture-templates
-	`(("t" "Todo" entry
+	`(
+	  ;; 任务列表
+	  ("t" "Todo" entry
 	   (file+headline ,(expand-file-name "todo/todo.org" org-directory) "Tasks")
-	   "* TODO %?\n  %U\n  %a")
+	   "* TODO %?\n%U\n%a")
+	  ;; 临时记录，相当于一个草稿本，需要归档
 	  ("n" "Notes" entry
-	   (file+datetree ,(expand-file-name "notes/notes.org" org-directory))
-	   "* %?\n  %U\n  %a")
+	   (file+headline ,(expand-file-name "notes/notes.org" org-directory) "Notes")
+	   "* %?\n%U\n%a\n%i")
+	  ;; 想法+感悟，就像日记嘛
 	  ("j" "Journal" entry
 	   (file+datetree ,(expand-file-name "journal/journal.org" org-directory))
-	   "* %U %?\n  %i\n  %a"))))
+	   "* %?\n%a"))))
 
 (provide 'my-org)

@@ -9,7 +9,6 @@
 (package-initialize)
 
 ;; 分离Emacs的custom配置
-
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (unless (file-exists-p custom-file)
   (make-empty-file custom-file))
