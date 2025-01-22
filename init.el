@@ -7,8 +7,17 @@
 			 ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
 			 ("melpa-stable" . "https://stable.melpa.org/packages/")))
 (package-initialize)
+
+;; 分离Emacs的custom配置
+
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(unless (file-exists-p custom-file)
+  (make-empty-file custom-file))
+(load custom-file)
+
 ;; straight.el包管理器配置
 ;;(require 'my-straight)
+
 
 ;; print OS type
 (message "Your system type is %s." system-type)
@@ -35,19 +44,3 @@
 
 
 (require 'my-optional)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("8dbbcb2b7ea7e7466ef575b60a92078359ac260c91fe908685b3983ab8e20e3f" default))
- '(package-selected-packages
-   '(markdown-mode markdown-ts-mode pyim-cregexp-utils pyim-basedict magit with-proxy monokai-theme subed pangu-spacing ripgrep embark-consult consult restart-emacs vterm pyim-wbdict popup pyim avy which-key embark marginalia orderless vertico company)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
