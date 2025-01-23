@@ -41,14 +41,14 @@
 	  ;; 任务列表
 	  ("t" "Todo" entry
 	   (file+headline ,(expand-file-name "todo/todo.org" org-directory) "Tasks")
-	   "* TODO %?\n%U\n%a")
+	   "* TODO %?\n%U\n%a\n")
 	  ;; 临时记录，相当于一个草稿本，需要归档
 	  ("n" "Notes" entry
 	   (file+headline ,(expand-file-name "notes/notes.org" org-directory) "Notes")
-	   "* %?\n%U\n%a\n%i")
+	   "* %?\n%U\n%a\n%i\n")
 	  ;; 想法+感悟，就像日记嘛
 	  ("j" "Journal" entry
 	   (file+datetree ,(expand-file-name "journal/journal.org" org-directory))
-	   "* %?\n%a"))))
+	   "* %?\n%a\n"))))
 
 (provide 'my-org)
