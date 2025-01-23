@@ -8,10 +8,11 @@
   (setq default-input-method "pyim")
   :config
   ;; 输入法能够跟随弹窗
-  (use-package popup
-    :ensure t
-    :config
-    (setq pyim-page-tooltip 'popup))
+  ;; 在org中会卡，所以关闭了。应该寻求更好的弹窗……但其实五笔用不用都不太影响
+  ;; (use-package popup
+  ;;   :ensure t
+  ;;   :config
+  ;;   (setq pyim-page-tooltip 'popup))
   ;; 五笔词库
   (use-package pyim-wbdict
     :ensure t
