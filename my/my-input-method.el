@@ -1,18 +1,26 @@
+;; 设置编码环境，避免org-mode中文卡頓
+(set-language-environment "UTF-8")
+
 ;; 内置输入法
 (use-package pyim
   :ensure t
   ;; 启动后1秒加载，这样才可以按输入法进行搜索
   :defer 1
-  :bind (("M-j" . toggle-input-method))
+  :bind (("C-\\" . toggle-input-method))
   :init
   (setq default-input-method "pyim")
   :config
   ;; 输入法能够跟随弹窗
-  ;; 在org中会卡，所以关闭了。应该寻求更好的弹窗……但其实五笔用不用都不太影响
+  ;; popup在多windows时出现分裂的情况，用posframe替代
   ;; (use-package popup
   ;;   :ensure t
   ;;   :config
   ;;   (setq pyim-page-tooltip 'popup))
+  (use-package posframe
+    :ensure t
+    :config
+    (setq pyim-page-tooltip 'posframe))
+  
   ;; 五笔词库
   (use-package pyim-wbdict
     :ensure t
