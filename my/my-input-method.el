@@ -4,8 +4,8 @@
 ;; 内置输入法
 (use-package pyim
   :ensure t
-  ;; 启动后1秒加载，这样才可以按输入法进行搜索
-  :defer 1
+  ;; 启动后加载，这样才可以按输入法进行搜索
+  :defer nil
   :bind (("C-\\" . toggle-input-method))
   :init
   (setq default-input-method "pyim")
@@ -39,11 +39,12 @@
       (pyim-cregexp-build result)))
   (advice-add 'orderless-regexp :around #'my-orderless-regexp)
   ;; 让 avy 支持拼音搜索
-  (with-eval-after-load 'avy
-    (defun my-avy--regex-candidates (fun regex &optional beg end pred group)
-      (let ((regex (pyim-cregexp-build regex)))
-	(funcall fun regex beg end pred group)))
-    (advice-add 'avy--regex-candidates :around #'my-avy--regex-candidates))
+  ;; avy-goto-char-timer并不能良好支持五笔输入法，还是关了
+  ;; (with-eval-after-load 'avy
+  ;;   (defun my-avy--regex-candidates (fun regex &optional beg end pred group)
+  ;;     (let ((regex (pyim-cregexp-build regex)))
+  ;; 	(funcall fun regex beg end pred group)))
+  ;;   (advice-add 'avy--regex-candidates :around #'my-avy--regex-candidates))
   )
 
 

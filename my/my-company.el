@@ -37,10 +37,14 @@
   :config
   (which-key-mode t))
 
+;; 屏幕内字符跳转
 (use-package avy
   :ensure t
+  :after org
   :bind
-  (("C-j" . avy-goto-char-2))
+  (("C-j" . avy-goto-char-timer)
+   :map org-mode-map
+   ("C-j" . avy-goto-char-timer))
   :config
   (setq avy-background t))
 

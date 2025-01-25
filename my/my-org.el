@@ -19,9 +19,7 @@
   :bind (
 	 ("C-c l" . #'org-store-link)
 	 ("C-c a" . #'org-agenda)
-	 ("C-c c" . #'org-capture)
-	 :map org-mode-map
-	 ("C-j" . avy-goto-char-timer))
+	 ("C-c c" . #'org-capture))
   :config
   ;; org agenda 相关设置
   (setq org-directory "~/org/")
