@@ -21,6 +21,10 @@
 	 ("C-c a" . #'org-agenda)
 	 ("C-c c" . #'org-capture))
   :config
+  (set-face-attribute 'org-level-1 nil :height 1.4) ;; 一级标题大一点
+  (set-face-attribute 'org-level-2 nil :height 1.3) ;; 二级标题稍微大
+  (set-face-attribute 'org-level-3 nil :height 1.2) ;; 三级标题正常
+  (set-face-attribute 'org-level-4 nil :height 1.1) ;; 其他标题较小
   ;; org agenda 相关设置
   (setq org-directory "~/org/")
   ;; 注意这里并没有设置递归寻找，应该用capture功能将todo项引入
