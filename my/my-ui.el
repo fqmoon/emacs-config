@@ -15,16 +15,18 @@
 ;;   :ensure t)
 
 ;; Windows的默认字体过丑
-(when (eq system-type 'windows-nt)
+(when (or (eq system-type 'windows-nt)
+	  (eq system-type 'gnu/linux))
   (setq fonts '("Consolas" "微软雅黑"))
   (set-fontset-font t 'unicode "Segoe UI Emoji" nil 'prepend)
   (set-face-attribute 'default nil :font
-                      (format "%s:pixelsize=%d" (car fonts) 20)))
-;; 修正GUI的中文字体笔画粗细不一样的问题
-(if (display-graphic-p)
-    (dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font (frame-parameter nil 'font) charset
-                        (font-spec :family (car (cdr fonts))))))
+                      (format "%s:pixelsize=%d" (car fonts) 20))
+  ;; 修正GUI的中文字体笔画粗细不一样的问题
+  (if (display-graphic-p)
+      (dolist (charset '(kana han symbol cjk-misc bopomofo))
+	(set-fontset-font (frame-parameter nil 'font) charset
+                          (font-spec :family (car (cdr fonts))))))
+  )
 ;; 设置中英文字符宽度一致（可选）
 ;; (setq face-font-rescale-alist '(("微软雅黑" . 1.0)))
 
