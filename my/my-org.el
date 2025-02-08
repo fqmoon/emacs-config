@@ -28,10 +28,7 @@
   ;; org agenda 相关设置
   (setq org-directory "~/org/")
   ;; 注意这里并没有设置递归寻找，应该用capture功能将todo项引入
-  (setq org-agenda-files (list (expand-file-name "agenda/" org-directory)
-			       (expand-file-name "todo/" org-directory)
-			       (expand-file-name "notes/" org-directory)
-			       (expand-file-name "journal/" org-directory)))
+  (setq org-agenda-files (list (expand-file-name "agenda/" org-directory)))
   ;; 参考：https://www.zmonster.me/2018/02/28/org-mode-capture.html
   ;; 模板中替代词：
   ;; - %U 未激活时间
@@ -42,15 +39,15 @@
 	`(
 	  ;; 任务列表
 	  ("t" "Todo" entry
-	   (file+headline ,(expand-file-name "todo/todo.org" org-directory) "Tasks")
+	   (file+headline ,(expand-file-name "agenda/todo.org" org-directory) "Tasks")
 	   "* TODO %?\n%U\n%a\n")
-	  ;; 临时记录，相当于一个草稿本，需要归档
-	  ("n" "Notes" entry
-	   (file+headline ,(expand-file-name "notes/notes.org" org-directory) "Notes")
+	  ;; 草稿本，里面的记录需要归档
+	  ("d" "Draft" entry
+	   (file+headline ,(expand-file-name "agenda/draft.org" org-directory) "Draft")
 	   "* %?\n%U\n%a\n%i\n")
 	  ;; 想法+感悟，就像日记嘛
 	  ("j" "Journal" entry
-	   (file+datetree ,(expand-file-name "journal/journal.org" org-directory))
+	   (file+datetree ,(expand-file-name "agenda/journal.org" org-directory))
 	   "* %?\n%a\n"))))
 
 (provide 'my-org)
