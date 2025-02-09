@@ -42,9 +42,10 @@
   :ensure t
   :after org
   :bind
-  (("C-j" . avy-goto-char-timer)
-   :map org-mode-map
-   ("C-j" . avy-goto-char-timer))
+  (("M-j" . avy-goto-char-timer)
+   ;; :map org-mode-map
+   ;; ("C-j" . avy-goto-char-timer)
+   )
   :config
   (setq avy-background t))
 
