@@ -29,8 +29,8 @@
 ;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
 ;; 水平滚动
 (setq mouse-wheel-tilt-scroll t)
-;; 水平滚动反向（自然滚动）
-(setq mouse-wheel-flip-direction t)
+;; 水平滚动反向（自然滚动） nil的话在windows上体验正常
+(setq mouse-wheel-flip-direction nil)
 ;; 关闭滚轮加速实测不关更好用）
 ;(setq mouse-wheel-progressive-speed nil)
 
