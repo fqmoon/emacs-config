@@ -15,8 +15,10 @@
 	 ("M-s L" . consult-line-multi)	; 跨buffer搜索
 	 ;; 项目级字符串搜索
 	 ("C-S-s" . consult-ripgrep)
-	 :map project-prefix-map
-	 ("f" . consult-fd))
+	 ;; 下方的改动会让C-x p p的面板中的find-file无法使用
+	 ;; :map project-prefix-map
+	 ;; ("f" . consult-fd)
+	 )
   ;; Enable automatic preview at point in the *Completions* buffer. This is
   ;; relevant when you use the default completion UI.
   :hook (completion-list-mode . consult-preview-at-point-mode)
