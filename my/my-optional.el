@@ -4,6 +4,7 @@
 (when (not (eq system-type 'windows-nt))
   (use-package vterm))
 
+;; TODO 当打开.md文件时，询问安装
 ;; https://jblevins.org/projects/markdown-mode/
 (use-package markdown-mode)
 

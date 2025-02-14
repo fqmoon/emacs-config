@@ -7,9 +7,13 @@
   (interactive)
   (find-file user-init-file))
 
-;; git version control
-(use-package magit
-  :ensure t
-  :defer t)
+;; magit是一个很好用的版本管理包
+;; 但是在windows上卡得没法用，在该平台关闭该功能
+(when (not (eq system-type 'windows-nt))
+  (use-package magit
+    :ensure t
+    :defer t))
+
+;; TODO 鼠标
 
 (provide 'my-base)
