@@ -1,6 +1,8 @@
 ;; line number
 ;;(global-linum-mode 1)
 (global-display-line-numbers-mode 1)
+;; 不在下方状态栏中显示行号
+(line-number-mode 0)
 ;; 光标（cursor）样式
 (setq-default cursor-type 'bar)
 ;; 显示配对括号
