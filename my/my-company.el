@@ -25,10 +25,8 @@
   :ensure t
   :config
   (global-set-key (kbd "C-;") 'embark-act)
-  ;; 在安装了consult之后，consult-line命令就可以不只匹配一行的开头了
   (use-package embark-consult
-    :ensure t
-    :bind (("C-s" . 'consult-line))))
+    :ensure t))
 
 ;; Emacs-30已经内置
 ;; 可以提示组合命令键
