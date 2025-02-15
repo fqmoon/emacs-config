@@ -14,6 +14,13 @@
     :ensure t
     :defer t))
 
+(defun my/copy-all ()
+  "拷贝整个缓冲区，不影响光标位置"
+  (interactive)
+  (let ((cur-pos (point)))
+    (kill-ring-save (point-min) (point-max))
+    (goto-char cur-pos)))
+
 ;; TODO 鼠标
 
 (provide 'my-base)
