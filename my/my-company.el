@@ -23,8 +23,10 @@
 ;; 类似于鼠标右键菜单，一个上下文语境的命令
 (use-package embark
   :ensure t
+  :bind
+  (("C-;" . embark-act)
+   ("C-s" . consult-line))
   :config
-  (global-set-key (kbd "C-;") 'embark-act)
   (use-package embark-consult
     :ensure t))
 
