@@ -1,3 +1,9 @@
+;;; package --- Summary -*- lexical-binding: t; -*-
+
+;;; Commentary:
+
+;;; Code:
+
 ;;; base文件存放所有的基本配置，保证它们不出错
 ;;; 尽量少依赖于三方包
 
@@ -44,6 +50,42 @@
     (kill-ring-save (point-min) (point-max))
     (goto-char cur-pos)))
 
+;; WSL?
+(defun running-in-wsl-p ()
+  "Emacs is running in wsl."
+  (and (eq system-type 'gnu/linux)
+       (with-temp-buffer
+	 (insert-file-contents "/proc/version")
+	 (goto-char (point-min))
+	 (search-forward "WSL" nil t))))
+
+(defun running-on-wayland-p ()
+  "Emacs is running on Wayland."
+  (not (string-empty-p
+	(getenv "WAYLAND_DISPLAY"))))
+
+(if (and
+     (running-in-wsl-p)
+     (running-on-wayland-p))
+    (progn
+      (message "Running in WSL on Wayland, now set clipboard. You must install the wl-clipboard program.")
+      ;; 使用 wl-copy 复制文本到系统剪贴板
+      (defun my/wsl-copy (text &optional push)
+	(let ((process-connection-type nil))
+	  (let ((proc (start-process "wl-copy" nil "wl-copy")))
+	    (process-send-string proc text)
+	    (process-send-eof proc))))
+
+      ;; 使用 wl-paste 从系统剪贴板粘贴文本
+      (defun my/wsl-paste ()
+	(shell-command-to-string "wl-paste --no-newline"))
+
+      ;; 激活这两个函数为 Emacs 的剪贴板交互函数
+      (setq interprogram-cut-function #'my/wsl-copy)
+      (setq interprogram-paste-function #'my/wsl-paste)))
+
+
 ;; TODO 鼠标
 
 (provide 'my-base)
+;;; my-base.el

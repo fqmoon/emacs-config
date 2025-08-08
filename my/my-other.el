@@ -11,8 +11,6 @@
 ;;   :hook (after-init . repeat-mode))
 
 
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
-
 ;; 禁止备份文件（后缀名为~）
 (setq make-backup-files nil)
 ;; 禁止自动保存

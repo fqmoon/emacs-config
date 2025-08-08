@@ -43,14 +43,3 @@
 
 
 (require 'my-optional)
-
-
-
-;; (use-package meow
-;;   :ensure t
-;;   :config
-;;   (defun meow-setup ()
-;;       ""
-;;     '())
-;;   (meow-setup)
-;;   (meow-global-mode 1))
