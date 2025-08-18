@@ -8,6 +8,12 @@
 ;; 显示配对括号
 (show-paren-mode t)
 
+;; 窗口布局记录和切换
+;; C-c <left> 前一个窗口布局
+;; C-c <right> 后一个
+(winner-mode t)
+
+
 ;; chinese
 ;; 设置默认字体和中文字体
 ;(set-face-attribute 'default nil :font "Ubuntu Mono-14") ;; 替换为你喜欢的英文字体

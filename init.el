@@ -1,3 +1,8 @@
+;;; package --- Summary -*- lexical-binding: t; -*-
+
+;;; Commentary:
+
+;;; Code:
 ;; 环境：Emacs 29.4-1
 
 ;; 配置源
@@ -42,4 +47,21 @@
 (require 'my-org)
 
 
+;; TODO move to my-jump
+;; (use-package better-jumper
+;;   :ensure t
+;;   :preface
+;;   (require 'ring)
+;;   :init
+;;   (better-jumper-mode 1)
+;;   :bind (("M-[" . better-jumper-jump-backward)
+;;          ("M-]" . better-jumper-jump-forward)))
+
 (require 'my-optional)
+
+;; 将bash环境传入emacs
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+

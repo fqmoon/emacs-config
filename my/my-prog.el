@@ -22,6 +22,15 @@
   (global-set-key (kbd "M-n") 'flymake-goto-next-error)
   (global-set-key (kbd "M-p") 'flymake-goto-prev-error))
 
-;(require 'my-prog-treesit)
+;;(require 'my-prog-treesit)
+
+(use-package lsp-mode
+  :ensure t
+  :config
+  ())
+
+(use-package lsp-treemacs
+  :ensure t)
+
 
 (provide 'my-prog)

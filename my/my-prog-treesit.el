@@ -61,8 +61,10 @@
       (with-proxy
 	(treesit-install-language-grammar lang))))
   ;; 安装语法
+  (install-lang 'c)
   (install-lang 'typescript)
   (install-lang 'javascript)
+  (install-lang 'rust)
   ;; (install-lang 'markdown)
   ;; hook
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
