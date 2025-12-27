@@ -9,9 +9,12 @@
 (use-package markdown-mode)
 
 ;; 字幕编辑，支持.srt按时间排序
-(use-package subed)
+(use-package subed
+  :defer t
+  :commands (subed))
 
 ;; 重启功能
-(use-package restart-emacs)
+(use-package restart-emacs
+  :defer t)
 
 (provide 'my-optional)
