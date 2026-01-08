@@ -1,12 +1,54 @@
+;;; -*- lexical-binding: t; -*-
 ;;; 可选包
+
+
+(defun my/interactive-install-package (pkg)
+  (unless (package-installed-p pkg)
+    (when (y-or-n-p (format "%s not installed, install it now? " pkg))
+      (package-refresh-contents)
+      (package-install pkg)))
+  (package-installed-p pkg))
+
+(defun my/with-package (pkg fn)
+  "Install PKG and run FN."
+  (if (my/interactive-install-package pkg)
+      (funcall fn)))
+
+
+;; install subed to edit .srt files
+(defun srt-file-p ()
+  (and buffer-file-name
+       (string-match-p "\\.srt\\'" buffer-file-name)))
+(defun try-subed ()
+  (my/with-package
+   'subed
+   (lambda ()
+     (require 'subed))))
+(defun srt-file-hook ()
+  (if (srt-file-p)
+      (try-subed)))
+(add-hook 'find-file-hook #'srt-file-hook)
+
 
 ;; vterm是一个终端模拟器，它需要编译，要在系统里安装libtool-bin
 (when (not (eq system-type 'windows-nt))
   (use-package vterm))
 
-;; TODO 当打开.md文件时，询问安装
+
+;; markdown
 ;; https://jblevins.org/projects/markdown-mode/
-(use-package markdown-mode)
+(defun markdown-file-p ()
+  (and buffer-file-name
+       (string-match-p "\\.md\\'" buffer-file-name)))
+(defun try-markdown ()
+  (my/with-package
+   'markdown-mode
+   (lambda ()
+     (require 'markdown-mode))))
+(defun md-file-hook ()
+  (if (markdown-file-p)
+      (try-markdown)))
+(add-hook 'find-file-hook #'md-file-hook)
 
 ;; 字幕编辑，支持.srt按时间排序
 (use-package subed
