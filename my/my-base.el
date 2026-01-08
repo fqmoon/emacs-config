@@ -20,17 +20,25 @@
 (defun my/open-explorer ()
   "打开当前文件所在文件夹."
   (interactive)
+  ;; TODO compitable with wsl, path wrong
   (let ((dir (file-name-directory (or buffer-file-name
 				      default-directory)))
-	(dir-cmd (cdr (assoc system-type
-			     '((windows-nt . "explorer")
-			       (darwin . "open")
-			       (gnu/linux . "xdg-open"))))))
+	(dir-cmd
+	 (if (running-in-wsl-p)
+	     "explorer.exe"
+	   (cdr (assoc system-type
+		       '((windows-nt . "explorer.exe")
+			 (darwin . "open")
+			 (gnu/linux . "xdg-open"))))))
+	(path-prefix (if (running-in-wsl-p)
+			 "\\\\wsl.localhost\\Ubuntu-24.04"
+		         "")))
     (cond ((eq dir-cmd nil)
 	   "Unknown system")
 	  (t
 	   (let ((cmd (concat dir-cmd
 			      " \""
+			      path-prefix
 			      (my/path-convert	dir)
 			      "\"")))
 	     (print cmd)
