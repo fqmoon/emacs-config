@@ -6,7 +6,10 @@
 ;; 光标（cursor）样式
 (setq-default cursor-type 'bar)
 ;; 显示配对括号
+;; TODO I need the rainbow-paren
 (show-paren-mode t)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
 
 ;; 窗口布局记录和切换
 ;; C-c <left> 前一个窗口布局
