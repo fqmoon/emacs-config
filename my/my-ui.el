@@ -6,8 +6,13 @@
 ;; 光标（cursor）样式
 (setq-default cursor-type 'bar)
 ;; 显示配对括号
-;; TODO I need the rainbow-paren
-(show-paren-mode t)
+;; replace original paren-mode by rainbow-paren
+;; (show-paren-mode 0)
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (emacs-lisp-mode . rainbow-delimiters-mode))
+
+
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
