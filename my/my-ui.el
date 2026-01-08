@@ -72,6 +72,7 @@
 ;;   )
 
 ;; 类似于VSCODE的标签页
+(if nil
 (use-package centaur-tabs
   ;;:pin "melpa-stable"
   :ensure t
@@ -86,8 +87,8 @@
   ;; 也可以用 ESC [ 按出来
   ("M-[" . centaur-tabs-backward)
   ;; 也可以用 ESC ] 按出来
-  ("M-]" . centaur-tabs-forward)
-  )
+  ("M-]" . centaur-tabs-forward))
+)
 
 ;; 显示水平滚动条
 (setq-default horizontal-scroll-bar-mode t)
