@@ -28,6 +28,8 @@
 ;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
 ;; 滚轮开启水平滚动
 (setq mouse-wheel-tilt-scroll t)
+;; Disable half-scroll when pointer out of screen
+(setq scroll-conservatively 101)
 ;; 水平滚动反向（自然滚动）
 ;; 在macos中，需要反向
 ;; 其余系统不需要
@@ -36,8 +38,9 @@
   (setq mouse-wheel-flip-direction t))
  (t
   (setq mouse-wheel-flip-direction nil)))
-;; 关闭滚轮加速实测不关更好用）
-;(setq mouse-wheel-progressive-speed nil)
+;; 关闭滚轮加速 unless macOS
+(unless (eq system-type 'darwin)
+  (setq mouse-wheel-progressive-speed nil))
 
 ;; 记录命令历史
 (use-package savehist
