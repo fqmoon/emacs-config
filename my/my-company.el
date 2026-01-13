@@ -1,8 +1,8 @@
 ;; 文内补全
-(use-package company
-  :ensure t
-  :config
-  (global-company-mode 1))
+;; Corfu is mordern than company
+;; For point completion
+(use-package corfu
+  :ensure t)
 
 ;; minibuffer company
 (use-package vertico
