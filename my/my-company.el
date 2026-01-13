@@ -2,7 +2,9 @@
 ;; Corfu is mordern than company
 ;; For point completion
 (use-package corfu
-  :ensure t)
+  :ensure t
+  :init
+  (global-corfu-mode 1))
 
 ;; minibuffer company
 (use-package vertico
