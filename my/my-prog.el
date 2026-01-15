@@ -27,8 +27,9 @@
 ;; TODO lsp installed but no configing, so start by command is needed
 (use-package lsp-mode
   :ensure t
-  :config
-  ())
+  :hook
+  ((c-mode-hook . #'lsp-deferred))
+  )
 
 (use-package lsp-treemacs
   :ensure t)
