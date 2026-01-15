@@ -17,6 +17,8 @@
 	 ("M-g r" . consult-recent-file)
 	 ;; 项目级字符串搜索
 	 ("M-g s" . consult-ripgrep)
+	 ("M-g m" . consult-mark)
+	 ("M-g M" . consult-global-mark)
 	 ;; 下方的改动会让C-x p p的面板中的find-file无法使用
 	 ;; :map project-prefix-map
 	 ;; ("f" . consult-fd)
