@@ -54,7 +54,10 @@
   (recentf-mode t))
 
 ;; 跳转到引用
-;; M-? 被macOS占用
+;; defult key is: M-?, 但被macOS占用
 (global-set-key (kbd "C-c r") 'xref-find-references)
+
+;; recurive-edit, C-M-c to exit
+(global-set-key (kbd "C-c C-e") #'recursive-edit)
 
 (provide 'my-other)
