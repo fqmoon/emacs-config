@@ -6,15 +6,17 @@
   :ensure t
   :bind (("M-y" . consult-yank-pop)		; 替换默认的粘贴板
 	 ("C-x M-:" . consult-complex-command) ; 历史命令补全
+	 ("M-g l" . consult-line)
+	 ;; or M-s L ?
+	 ("M-g L" . consult-line-multi)
 	 ("M-g g" . consult-goto-line)
 	 ("M-g i" . consult-imenu)
 	 ("M-g I" . consult-imenu-multi) ; 所有buffer里进行imenu
 	 ("M-g o" . consult-outline)
-	 ("C-x b" . consult-buffer)
-	 ("C-x C-r" . consult-recent-file)
-	 ("M-s L" . consult-line-multi)	; 跨buffer搜索
+	 ("M-g b" . consult-buffer)
+	 ("M-g r" . consult-recent-file)
 	 ;; 项目级字符串搜索
-	 ("C-S-s" . consult-ripgrep)
+	 ("M-g s" . consult-ripgrep)
 	 ;; 下方的改动会让C-x p p的面板中的find-file无法使用
 	 ;; :map project-prefix-map
 	 ;; ("f" . consult-fd)
