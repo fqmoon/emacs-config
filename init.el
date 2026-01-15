@@ -45,6 +45,7 @@
 (require 'my-proj)
 (require 'my-prog)
 (require 'my-org)
+(require 'my-ai)
 
 
 ;; TODO move to my-jump
