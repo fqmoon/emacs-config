@@ -14,6 +14,7 @@
 	 ("M-g I" . consult-imenu-multi) ; 所有buffer里进行imenu
 	 ("M-g o" . consult-outline)
 	 ("M-g b" . consult-buffer)
+	 ("M-g B" . consult-project-buffer)
 	 ("M-g r" . consult-recent-file)
 	 ;; 项目级字符串搜索
 	 ("M-g s" . consult-ripgrep)
