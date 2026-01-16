@@ -5,10 +5,12 @@
 	     (setq word-wrap nil)))
 
 ;; eglot是Emacs-29内置的语言服务器
-(use-package eglot
-  :hook ((js-ts-mode . eglot-ensure)
-	 (python-ts-mode . eglot-ensure))
-  )
+;; eglot可手动启用，先还是用LSP吧
+(when nil
+  (use-package eglot
+    :hook ((js-ts-mode . eglot-ensure)
+	   (python-ts-mode . eglot-ensure))
+    ))
 
 ;; 显示列号
 ;;(add-hook 'prog-mode-hook 'column-number-mode)
