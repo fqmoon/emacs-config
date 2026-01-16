@@ -24,7 +24,6 @@
 
 ;;(require 'my-prog-treesit)
 
-;; TODO lsp installed but no configing, so start by command is needed
 (use-package lsp-mode
   :ensure t
   :hook
