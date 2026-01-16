@@ -60,4 +60,10 @@
 ;; recurive-edit, C-M-c to exit
 (global-set-key (kbd "C-c C-e") #'recursive-edit)
 
+;; auto insert matched parentless
+(electric-pair-mode 1)
+
+(global-set-key (kbd "C-x k") #'kill-current-buffer)
+
+
 (provide 'my-other)

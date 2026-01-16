@@ -27,11 +27,15 @@
 (use-package lsp-mode
   :ensure t
   :hook
-  ((c-mode-hook . #'lsp-deferred))
+  ((c-mode . lsp-deferred))
   )
 
 (use-package lsp-treemacs
   :ensure t)
 
+(use-package paredit
+  :ensure t
+  :hook
+  ((emacs-lisp-mode . paredit-mode)))
 
 (provide 'my-prog)
