@@ -127,5 +127,22 @@
       (meow-setup)
       (meow-global-mode 1)))
 
+;; laeder-key config
+(global-unset-key (kbd "C-z"))
+(defvar my/leader-map
+  (make-sparse-keymap)
+  "Personal leader keymap.")
+(global-set-key (kbd "C-z") my/leader-map)
+(define-key my/leader-map (kbd "f f") #'consult-find)
+
+(define-key my/leader-map (kbd "w v") #'split-window-right)
+(define-key my/leader-map (kbd "w h") #'split-window-below)
+
+(define-key my/leader-map (kbd "F n") #'make-frame-command)
+(define-key my/leader-map (kbd "F k") #'delete-frame)
+
+(global-set-key (kbd "M-1") #'delete-other-windows)
+(global-set-key (kbd "M-0") #'delete-window)
+
 (provide 'my-keyboard)
 ;;; my-keyboard.el ends here
