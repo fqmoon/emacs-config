@@ -4,7 +4,6 @@
 ;; my config scripts
 (defvar my-path (expand-file-name "my" user-emacs-directory))
 (add-to-list 'load-path my-path)
-(add-to-list 'elisp-flymake-byte-compile-load-path my-path) ;; for flymake compiling
 
 ;; 配置源
 (require 'package)

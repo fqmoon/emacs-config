@@ -20,6 +20,8 @@
 ;; 代码错误检查
 (use-package flymake
   :hook (prog-mode . flymake-mode)
+  :init
+  (add-to-list 'elisp-flymake-byte-compile-load-path my-path) ;; for flymake compiling
   :config
   (global-set-key (kbd "M-g e") #'consult-flymake)
   )
