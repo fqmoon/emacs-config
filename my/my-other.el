@@ -64,7 +64,10 @@
 (electric-pair-mode 1)
 
 (global-set-key (kbd "C-x k") #'kill-current-buffer)
-(global-set-key (kbd "C-x C-b") #'electric-buffer-list)
+(global-set-key (kbd "M-o") #'other-window)
+(global-set-key (kbd "C-x C-b") #'ibuffer)
 
+(global-set-key (kbd "C-<up>") #'scroll-down-line)
+(global-set-key (kbd "C-<down>") #'scroll-up-line)
 
 (provide 'my-other)
