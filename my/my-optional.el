@@ -50,9 +50,4 @@
       (try-markdown)))
 (add-hook 'find-file-hook #'md-file-hook)
 
-
-;; 重启功能
-(use-package restart-emacs
-  :defer t)
-
 (provide 'my-optional)
