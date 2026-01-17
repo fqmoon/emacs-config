@@ -1,6 +1,11 @@
 ;;; -*- lexical-binding: t; -*-
 ;; 环境：Emacs 29.4-1 -> 30.1
 
+;; my config scripts
+(defvar my-path (expand-file-name "my" user-emacs-directory))
+(add-to-list 'load-path my-path)
+(add-to-list 'elisp-flymake-byte-compile-load-path my-path) ;; for flymake compiling
+
 ;; 配置源
 (require 'package)
 (setq package-archives '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
@@ -28,10 +33,7 @@
 ;; TODO 光标跳转功能包
 ;; TODO org中粘贴剪贴板图像 —— org-download
 
-;; my configs
-(add-to-list 'load-path (expand-file-name "my" user-emacs-directory))
 (require 'my-base)
-
 (require 'my-keyboard)
 (require 'my-ui)
 (require 'my-company)
