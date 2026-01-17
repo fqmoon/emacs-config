@@ -128,6 +128,7 @@
       (meow-global-mode 1)))
 
 ;; laeder-key config
+;; TODO define leader-key variable
 (global-unset-key (kbd "C-z"))
 (defvar my/leader-map
   (make-sparse-keymap)

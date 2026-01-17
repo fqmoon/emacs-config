@@ -64,6 +64,7 @@
 (electric-pair-mode 1)
 
 (global-set-key (kbd "C-x k") #'kill-current-buffer)
+(global-set-key (kbd "C-x C-b") #'electric-buffer-list)
 
 
 (provide 'my-other)

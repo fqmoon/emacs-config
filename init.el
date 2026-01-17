@@ -1,9 +1,5 @@
-;;; package --- Summary -*- lexical-binding: t; -*-
-
-;;; Commentary:
-
-;;; Code:
-;; 环境：Emacs 29.4-1
+;;; -*- lexical-binding: t; -*-
+;; 环境：Emacs 29.4-1 -> 30.1
 
 ;; 配置源
 (require 'package)
