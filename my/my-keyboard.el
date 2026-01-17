@@ -130,10 +130,11 @@
 ;; laeder-key config
 ;; TODO define leader-key variable
 (global-unset-key (kbd "C-z"))
+(defvar my/leader-key (kbd "C-z"))
 (defvar my/leader-map
   (make-sparse-keymap)
   "Personal leader keymap.")
-(global-set-key (kbd "C-z") my/leader-map)
+(global-set-key my/leader-key my/leader-map)
 (define-key my/leader-map (kbd "f f") #'consult-find)
 
 (define-key my/leader-map (kbd "w v") #'split-window-right)
