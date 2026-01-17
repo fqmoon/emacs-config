@@ -2,7 +2,9 @@
 ;; 环境：Emacs 29.4-1 -> 30.1
 
 ;; my config scripts
-(defvar my-path (expand-file-name "my" user-emacs-directory))
+(defvar my-path
+  (expand-file-name "my"
+		    (file-name-directory load-file-name)))
 (add-to-list 'load-path my-path)
 
 ;; 配置源
