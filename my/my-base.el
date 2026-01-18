@@ -95,5 +95,26 @@
 
 ;; TODO 鼠标
 
+;; install rest things...
+(defun my/install-rest ()
+  "Install the rest packages."
+  (interactive)
+  (nerd-icons-install-fonts))
+
+;; proxy functions
+(defun apply-proxy (port)
+  (let ((addr-or-nil (if port
+			 (format "http://localhost:%d" port)
+		       nil)))
+    (setenv "http_proxy" addr-or-nil)
+    (setenv "https_proxy" addr-or-nil)
+    (message (format "Proxy addr is %s" addr-or-nil))))
+(defun my/set-proxy (n)
+  (interactive "nEnter port: ")
+  (apply-proxy n))
+(defun my/unset-proxy ()
+  (interactive )
+  (apply-proxy nil))
+
 (provide 'my-base)
 ;;; my-base.el ends here
