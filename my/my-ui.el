@@ -30,6 +30,11 @@
 ;; (use-package nerd-icons
 ;;   :ensure t)
 
+;; icons in ibuffer
+(use-package nerd-icons-ibuffer
+  :ensure t
+  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
 ;; Windows的默认字体过丑
 (when (or (eq system-type 'windows-nt)
 	  (eq system-type 'gnu/linux))

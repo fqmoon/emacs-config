@@ -5,6 +5,11 @@
   :ensure t
   :init
   (global-corfu-mode 1))
+;; show icons in corfu
+(use-package nerd-icons-corfu
+  :ensure t
+  :init
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
 ;; minibuffer company
 (use-package vertico
