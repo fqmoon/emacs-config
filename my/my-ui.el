@@ -27,13 +27,16 @@
 ;(set-face-attribute 'default nil :font "Ubuntu Mono-14") ;; 替换为你喜欢的英文字体
 ;(set-fontset-font t 'han (font-spec :family "SimSun")) ;; 替换为你安装的中文字体
 
-;; (use-package nerd-icons
-;;   :ensure t)
-
-;; icons in ibuffer
+;; icons
+(use-package nerd-icons
+  :ensure t)
 (use-package nerd-icons-ibuffer
   :ensure t
   :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+(use-package nerd-icons-dired
+  :ensure t
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
 
 ;; Windows的默认字体过丑
 (when (or (eq system-type 'windows-nt)
