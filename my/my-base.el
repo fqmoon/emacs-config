@@ -99,7 +99,9 @@
 (defun my/install-rest ()
   "Install the rest packages."
   (interactive)
-  (nerd-icons-install-fonts))
+  ;; 在windows上会下载一个.ttf文件，要手动打开安装哦
+  (nerd-icons-install-fonts)
+  )
 
 ;; proxy functions
 (defun apply-proxy (port)
