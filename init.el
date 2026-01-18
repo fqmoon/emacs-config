@@ -60,8 +60,9 @@
 
 (require 'my-optional)
 
-;; 将bash环境传入emacs
+;; 将bash环境传入emacs, only for macOS
 (use-package exec-path-from-shell
+  :if (eq system-type 'darwin)
   :ensure t
   :config
   (exec-path-from-shell-initialize))
