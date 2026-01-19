@@ -54,6 +54,18 @@
 ;; 设置中英文字符宽度一致（可选）
 ;; (setq face-font-rescale-alist '(("微软雅黑" . 1.0)))
 
+(when (eq system-type 'windows-nt)
+  ;; 需要安装Sarasa Mono SC字体，windows不自带
+  ;; 地址：https://github.com/be5invis/Sarasa-Gothic
+  (let ((font-name "Sarasa Mono SC-12"))
+    ;; 英文字体
+    (set-face-attribute 'default nil
+			:font font-name)
+    ;; 中文字体
+    (set-fontset-font t 'han font-name)
+    (set-fontset-font t 'cjk-misc font-name)))
+
+
 ;; 主题
 (use-package doom-themes
   :ensure t
