@@ -14,6 +14,7 @@
 
 
 (tool-bar-mode 0)
+(menu-bar-mode 0)
 (scroll-bar-mode 0)
 
 ;; 窗口布局记录和切换
