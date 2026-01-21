@@ -30,10 +30,12 @@
 (add-hook 'find-file-hook #'srt-file-hook)
 
 
-;; vterm是一个终端模拟器，它需要编译，要在系统里安装libtool-bin 
-(use-package vterm
-  :ensure t
-  :if (not (eq system-type 'windows-nt)))
+;; vterm是一个终端模拟器，它需要编译，要在系统里安装libtool-bin
+(unless (eq system-type 'windows-nt)
+  (use-package vterm
+    :ensure t
+    :defer t
+    :commands (vterm)))
 
 
 ;; markdown
