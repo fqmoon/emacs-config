@@ -46,10 +46,10 @@
 
 ;; magit是一个很好用的版本管理包
 ;; 但是在windows上卡得没法用，在该平台关闭该功能
-(use-package magit
-  :if (not (eq system-type 'windows-nt))
-  :ensure t
-  :defer t)
+(unless (eq system-type 'windows-nt)
+  (use-package magit
+    :ensure t
+    :defer t))
 
 (defun my/copy-all ()
   "拷贝整个缓冲区，不影响光标位置"
