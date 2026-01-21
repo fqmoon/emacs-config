@@ -62,9 +62,8 @@
 (require 'my-optional)
 
 ;; 将bash环境传入emacs, only for macOS
-(use-package exec-path-from-shell
-  :if (eq system-type 'darwin)
-  :ensure t
-  :config
-  (exec-path-from-shell-initialize))
-
+(when (eq system-type 'darwin)
+  (use-package exec-path-from-shell
+    :ensure t
+    :config
+    (exec-path-from-shell-initialize)))
