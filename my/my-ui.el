@@ -22,12 +22,6 @@
 ;; C-c <right> 后一个
 (winner-mode t)
 
-
-;; chinese
-;; 设置默认字体和中文字体
-;(set-face-attribute 'default nil :font "Ubuntu Mono-14") ;; 替换为你喜欢的英文字体
-;(set-fontset-font t 'han (font-spec :family "SimSun")) ;; 替换为你安装的中文字体
-
 ;; icons
 (use-package nerd-icons
   :ensure t)
