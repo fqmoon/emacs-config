@@ -39,40 +39,24 @@
   :hook
   (dired-mode . nerd-icons-dired-mode))
 
-;; Windows的默认字体过丑
-(when (or (eq system-type 'windows-nt)
-	  (eq system-type 'gnu/linux))
-  (setq fonts '("Consolas" "微软雅黑"))
-  (set-fontset-font t 'unicode "Segoe UI Emoji" nil 'prepend)
-  ;; (set-face-attribute 'default nil :font
-                      ;; (format "%s:pixelsize=%d" (car fonts) 20))
-  ;; 修正GUI的中文字体笔画粗细不一样的问题
-  (if (display-graphic-p)
-      (dolist (charset '(kana han symbol cjk-misc bopomofo))
-	(set-fontset-font (frame-parameter nil 'font) charset
-                          (font-spec :family (car (cdr fonts))))))
-  )
-;; 设置中英文字符宽度一致（可选）
-;; (setq face-font-rescale-alist '(("微软雅黑" . 1.0)))
-
-(when (eq system-type 'windows-nt)
-  ;; 需要安装Sarasa Mono SC字体，windows不自带
-  ;; 地址：https://github.com/be5invis/Sarasa-Gothic
-  (let ((font-name "Sarasa Mono SC-12"))
-    ;; 英文字体
-    (set-face-attribute 'default nil
-			:font font-name)
-    ;; 中文字体
-    (set-fontset-font t 'han font-name)
-    (set-fontset-font t 'cjk-misc font-name)))
-
+;; 需要安装Sarasa Mono SC字体，windows不自带
+;; 地址：https://github.com/be5invis/Sarasa-Gothic
+;; 下载后压缩出.ttf文件。linux安装方法－放到~/.local/share/font/下
+(let ((font-name "Sarasa Mono SC-12"))
+  (message "Font=%s" font-name)
+  ;; 英文字体
+  (set-face-attribute 'default nil
+		      :font font-name)
+  ;; 中文字体
+  (set-fontset-font t 'han font-name)
+  (set-fontset-font t 'cjk-misc font-name))
 
 ;; 主题
 (use-package doom-themes
   :ensure t
   :config
   ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+  (setq doom-themes-enable-bold t ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
   ;; Enable flashing mode-line on errors
