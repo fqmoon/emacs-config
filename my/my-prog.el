@@ -48,6 +48,8 @@
 (use-package cmake-mode
   :ensure t)
 (use-package eldoc-cmake
-  :ensure t)
+  :ensure t
+  :defer t
+  :hook ((cmake-mode . eldoc-cmake-enable)))
 
 (provide 'my-prog)
