@@ -31,11 +31,10 @@
 (use-package embark
   :ensure t
   :bind
-  (("C-;" . embark-act)
-   ("C-s" . consult-line))
-  :config
-  (use-package embark-consult
-    :ensure t))
+  (("C-;" . embark-act)))
+(use-package embark-consult
+  :ensure t
+  :hook ((embark-collect-mode . consult-preview-at-point-mode)))
 
 ;; Emacs-30已经内置
 ;; 可以提示组合命令键
@@ -49,7 +48,7 @@
   :ensure t
   ;; :after org
   :bind
-  (("C-'" . avy-goto-char-timer)
+  (("C-'" . avy-goto-char-2)
    ;; :map org-mode-map
    ;; ("C-j" . avy-goto-char-timer)
    )

@@ -4,12 +4,13 @@
 ;; search tool
 (use-package consult
   :ensure t
-  :bind (("M-y" . consult-yank-pop)		; 替换默认的粘贴板
-	 ("C-x M-:" . consult-complex-command) ; 历史命令补全
+  :bind (("C-s" . consult-line)
+	 ("C-S-s" . consult-ripgrep)
+	 ("M-y" . consult-yank-pop)		; 替换默认的粘贴板
+	 ("M-:" . consult-complex-command) ; 历史命令补全
 	 ("M-g l" . consult-line)
-	 ;; or M-s L ?
 	 ("M-g L" . consult-line-multi)
-	 ("M-g g" . consult-goto-line)
+	 ("M-g M-g" . consult-goto-line)
 	 ("M-g i" . consult-imenu)
 	 ("M-g I" . consult-imenu-multi) ; 所有buffer里进行imenu
 	 ("M-g o" . consult-outline)
