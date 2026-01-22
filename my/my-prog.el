@@ -44,4 +44,10 @@
   :hook
   ((emacs-lisp-mode . paredit-mode)))
 
+;; cmake
+(use-package cmake-mode
+  :ensure t)
+(use-package eldoc-cmake
+  :ensure t)
+
 (provide 'my-prog)
