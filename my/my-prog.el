@@ -28,17 +28,6 @@
 
 ;;(require 'my-prog-treesit)
 
-(use-package lsp-mode
-  :disabled t
-  :ensure t
-  :hook
-  ((c-mode . lsp-deferred))
-  )
-
-(use-package lsp-treemacs
-  :disabled t
-  :ensure t)
-
 (use-package paredit
   :ensure t
   :hook
