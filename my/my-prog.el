@@ -46,10 +46,11 @@
 
 ;; cmake
 (use-package cmake-mode
-  :ensure t)
+  :ensure t
+  :mode (("CMakeLists\\.txt\\'" . cmake-mode)
+	 ("\\.cmake\\'" . cmake-mode)))
 (use-package eldoc-cmake
   :ensure t
-  :defer t
   :hook ((cmake-mode . eldoc-cmake-enable)))
 
 (provide 'my-prog)
