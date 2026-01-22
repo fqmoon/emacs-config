@@ -49,7 +49,8 @@
 (unless (eq system-type 'windows-nt)
   (use-package magit
     :ensure t
-    :defer t))
+    :commands (magit-status magit-blame)
+    :bind (("C-x g" . magit-status))))
 
 (defun my/copy-all ()
   "拷贝整个缓冲区，不影响光标位置"
