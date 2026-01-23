@@ -105,19 +105,20 @@
   )
 
 ;; proxy functions
-(defun apply-proxy (port)
-  (let ((addr-or-nil (if port
-			 (format "http://localhost:%d" port)
-		       nil)))
-    (setenv "http_proxy" addr-or-nil)
-    (setenv "https_proxy" addr-or-nil)
-    (message (format "Proxy addr is %s" addr-or-nil))))
-(defun my/set-proxy (n)
-  (interactive "nEnter port: ")
-  (apply-proxy n))
+(defun apply-proxy (addr-or-nil)
+  (setenv "http_proxy" addr-or-nil)
+  (setenv "https_proxy" addr-or-nil))
+(defun my/set-proxy (addr)
+  (interactive
+   (list (read-string "Enter addr: " "http://localhost:10810")))
+  ;; (interactive "sEnter addr (default: http://localhost:10810): ")
+  ;; (when (string-empty-p addr) (setq addr "gds"))
+  (apply-proxy addr)
+  (message "Set proxy-addr=%s" addr))
 (defun my/unset-proxy ()
-  (interactive )
-  (apply-proxy nil))
+  (interactive)
+  (apply-proxy nil)
+  (message "Set proxy-addr=%s" nil))
 
 (provide 'my-base)
 ;;; my-base.el ends here
