@@ -4,7 +4,8 @@
 ;; search tool
 (use-package consult
   :ensure t
-  :bind (("C-s" . consult-line)
+  :bind (("C-x b" . consult-buffer)
+	 ("C-s" . consult-line)
 	 ("C-S-s" . consult-ripgrep)
 	 ("M-y" . consult-yank-pop)		; 替换默认的粘贴板
 	 ("M-:" . consult-complex-command) ; 历史命令补全
