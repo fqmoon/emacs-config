@@ -35,6 +35,12 @@
 (use-package embark-consult
   :ensure t
   :hook ((embark-collect-mode . consult-preview-at-point-mode)))
+(use-package wgrep
+  :ensure t
+  :init
+  (setq wgrep-auto-save-buffer t)
+  :config
+  (define-key grep-mode-map (kbd "C-c C-e") #'wgrep-change-to-wgrep-mode))
 
 ;; Emacs-30已经内置
 ;; 可以提示组合命令键
