@@ -1,3 +1,7 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
+
 ;; line number
 ;;(global-linum-mode 1)
 (global-display-line-numbers-mode 1)
@@ -33,37 +37,26 @@
   :hook
   (dired-mode . nerd-icons-dired-mode))
 
-;; 需要安装Sarasa Mono SC字体，windows不自带
-;; 地址：https://github.com/be5invis/Sarasa-Gothic
-;; 下载后压缩出.ttf文件。linux安装方法－放到~/.local/share/font/下
-(when (display-graphic-p)
-  (let ((font-name "Sarasa Mono SC-12"))
-    (message "Font=%s" font-name)
-    ;; 英文字体
-    (set-face-attribute 'default nil
-			:font font-name)
-    ;; 中文字体
-    (set-fontset-font t 'han font-name)
-    (set-fontset-font t 'cjk-misc font-name)))
-
-;; 主题
-(use-package doom-themes
-  :ensure t
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (nerd-icons must be installed!)
-  ;; (doom-themes-neotree-config)
-  ;; or for treemacs users
-  ;; (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  ;; (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config)
-  (load-theme 'doom-one))
+;;; theme and font, etc
+(defun apply-ui-config-on-frame (frame)
+  "Apply UI config on the FRAME."
+  (with-selected-frame frame
+    (dolist (theme custom-enabled-themes)
+      (disable-theme theme))
+    (cond
+     ((display-graphic-p frame)
+      (require 'my-gui)
+      (my-gui-load-theme))
+     (t
+      (require 'my-tui)
+      (my-tui-load-theme))))
+  (message "Apply UI config on frame"))
+(add-hook 'after-make-frame-functions #'apply-ui-config-on-frame)
+(cond
+ ;; daemon
+ ((daemonp) (add-hook 'server-visit-hook #'apply-ui-config-on-frame))
+ ;; not daemon
+ (t (apply-ui-config-on-frame (selected-frame))))
 
 (use-package doom-modeline
   :ensure t
@@ -108,3 +101,4 @@
 ;;(require 'my-ui-treemacs)
 
 (provide 'my-ui)
+;;; my-ui.el ends here
