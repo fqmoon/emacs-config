@@ -37,6 +37,8 @@
 
 (require 'my-base)
 (require 'my-keyboard)
+(use-package my-tui
+  :defer 1)
 (require 'my-ui)
 (require 'my-company)
 (require 'my-input-method)
