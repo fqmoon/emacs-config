@@ -8,6 +8,9 @@
 (add-to-list 'load-path my-path)
 
 ;; 配置源
+(when (eq system-type 'windows-nt)
+  ;; 在win平台禁用GPG验证签名
+  (setq package-check-signature nil))
 (require 'package)
 (setq package-archives '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
 			 ("nongnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
