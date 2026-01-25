@@ -5,6 +5,13 @@
   :ensure t
   :init
   (global-corfu-mode 1))
+;;; corfu in tui.
+(use-package corfu-terminal
+  :if (and (not (display-graphic-p))
+	   (< emacs-major-version 31))
+  :ensure t
+  :config
+  (corfu-terminal-mode 1))
 ;; show icons in corfu
 (use-package nerd-icons-corfu
   :ensure t
