@@ -25,6 +25,10 @@
   :config
   (global-set-key (kbd "M-g e") #'consult-flymake)
   )
+;; fix errors in code
+(use-package attrap
+  :ensure t
+  :bind ("C-c C-a" . attrap-attrap))
 
 ;;(require 'my-prog-treesit)
 
