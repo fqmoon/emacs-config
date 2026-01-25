@@ -11,7 +11,7 @@
 	 ("M-:" . consult-complex-command) ; 历史命令补全
 	 ("M-g l" . consult-line)
 	 ("M-g L" . consult-line-multi)
-	 ("M-g M-g" . consult-goto-line)
+	 ("M-g g" . consult-goto-line)
 	 ("M-g i" . consult-imenu)
 	 ("M-g I" . consult-imenu-multi) ; 所有buffer里进行imenu
 	 ("M-g o" . consult-outline)

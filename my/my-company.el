@@ -52,9 +52,8 @@
 ;; 屏幕内字符跳转
 (use-package avy
   :ensure t
-  ;; :after org
   :bind
-  (("C-'" . avy-goto-char-2)
+  (("M-j" . avy-goto-char-2)
    ;; :map org-mode-map
    ;; ("C-j" . avy-goto-char-timer)
    )
