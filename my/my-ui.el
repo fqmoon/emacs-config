@@ -36,14 +36,15 @@
 ;; 需要安装Sarasa Mono SC字体，windows不自带
 ;; 地址：https://github.com/be5invis/Sarasa-Gothic
 ;; 下载后压缩出.ttf文件。linux安装方法－放到~/.local/share/font/下
-(let ((font-name "Sarasa Mono SC-12"))
-  (message "Font=%s" font-name)
-  ;; 英文字体
-  (set-face-attribute 'default nil
-		      :font font-name)
-  ;; 中文字体
-  (set-fontset-font t 'han font-name)
-  (set-fontset-font t 'cjk-misc font-name))
+(when (display-graphic-p)
+  (let ((font-name "Sarasa Mono SC-12"))
+    (message "Font=%s" font-name)
+    ;; 英文字体
+    (set-face-attribute 'default nil
+			:font font-name)
+    ;; 中文字体
+    (set-fontset-font t 'han font-name)
+    (set-fontset-font t 'cjk-misc font-name)))
 
 ;; 主题
 (use-package doom-themes
