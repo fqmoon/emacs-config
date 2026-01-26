@@ -46,4 +46,8 @@
   :ensure t
   :hook ((cmake-mode . eldoc-cmake-enable)))
 
+(use-package typescript-mode
+  :ensure t
+  :mode ("\\.tsx?\\'"))
+
 (provide 'my-prog)
