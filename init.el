@@ -50,7 +50,7 @@
 (require 'my-org)
 (require 'my-ai)
 (require 'my-log)
-
+(require 'my-snippet)
 
 ;; TODO move to my-jump
 ;; (use-package better-jumper
