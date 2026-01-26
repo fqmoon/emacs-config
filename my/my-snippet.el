@@ -4,7 +4,8 @@
 
 (use-package yasnippet
   :ensure t
-  :hook (prog-mode . yas-minor-mode-on))
+  :hook ((prog-mode . yas-minor-mode-on)
+	 (text-mode . yas-minor-mode-on)))
 (use-package yasnippet-snippets
   :after yasnippet
   :ensure t)
