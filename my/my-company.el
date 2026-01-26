@@ -40,6 +40,7 @@
   :bind
   (("M-'" . embark-act)))
 (use-package embark-consult
+  :after consult
   :ensure t
   :hook ((embark-collect-mode . consult-preview-at-point-mode)))
 (use-package wgrep
