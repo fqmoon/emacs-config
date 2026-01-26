@@ -12,7 +12,10 @@
   :after yasnippet
   :ensure t
   :config
-  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
+  (add-hook 'yas-minor-mode-hook
+	    (lambda ()
+	      ;; capf是buffer local的，所以这样
+	      (add-to-list 'completion-at-point-functions #'yasnippet-capf))))
 
 (provide 'my-snippet)
 ;;; my-snippet.el ends here
