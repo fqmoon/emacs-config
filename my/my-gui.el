@@ -35,10 +35,10 @@
   ;; (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config)
-  (load-theme 'doom-one))
+  (my-gui-load-theme))
 
 (defun my-gui-load-theme ()
-  (load-theme 'doom-one))
+  (load-theme 'doom-one-light))
 
 (provide 'my-gui)
 ;;; my-gui.el ends here

@@ -5,10 +5,11 @@
 (use-package modus-themes
   :ensure t
   :config
-  (load-theme 'modus-vivendi))
+  (my-tui-load-theme))
 
 (defun my-tui-load-theme ()
-  (load-theme 'modus-vivendi))
+  ;; (load-theme 'modus-vivendi)
+  )
 
 ;;; 发送禁用焦点事件
 (defun my-tui--disable-xterm ()
