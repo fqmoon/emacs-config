@@ -20,6 +20,9 @@
     (set-fontset-font t 'cjk-misc font-name)))
 (my-gui--load-font)
 
+(defun my-gui-load-theme ()
+  (load-theme 'doom-one-light))
+
 (use-package doom-themes
   :ensure t
   :config
@@ -36,9 +39,6 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config)
   (my-gui-load-theme))
-
-(defun my-gui-load-theme ()
-  (load-theme 'doom-one-light))
 
 (provide 'my-gui)
 ;;; my-gui.el ends here
