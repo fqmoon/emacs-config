@@ -12,7 +12,6 @@
 
 ;;; emacs-30原生支持大量repeat配置，包括window、buffer、winner、text-scale改变
 (repeat-mode 1)
-(setq repeat-exit-timeout 1.5)
 
 ;; 禁止备份文件（后缀名为~）
 (setq make-backup-files nil)
