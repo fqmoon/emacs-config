@@ -12,6 +12,10 @@
 	   (python-ts-mode . eglot-ensure))
     ))
 
+(use-package eldoc
+  :config
+  (setq eldoc-idle-delay 0.1))
+
 ;; 显示列号
 ;;(add-hook 'prog-mode-hook 'column-number-mode)
 ;; 代码折叠

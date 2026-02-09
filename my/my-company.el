@@ -68,4 +68,29 @@
   :config
   (setq avy-background t))
 
+(use-package cape
+  :ensure t
+  :init
+  ;; 全局添加一些通用的补全后端
+  ;; 优先级：LSP > 关键字 > 文件 > Dabbrev（其他buffer的单词）
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  :config
+  ;; 配置 dabbrev 扫描其他 buffer（对前后端分离项目很有用）
+  (setq cape-dabbrev-min-length 2)
+  (setq cape-dabbrev-check-other-buffers t)
+  ;; 文件路径补全配置（写 import 路径时触发）
+  (setq cape-file-directory-must-exist t)
+  (setq cape-file-add-slash-on-enter t)
+  ;; eglot
+  (cl-labels ((setup-capf ()
+		(setq-local completion-at-point-functions
+			    (list (cape-capf-super
+				   #'eglot-completion-at-point
+				   #'cape-file
+				   #'cape-dabbrev
+				   #'cape-keyword)))))
+    (add-hook 'eglot-managed-mode-hook #'setup-capf)))
+
 (provide 'my-company)
