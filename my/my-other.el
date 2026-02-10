@@ -27,7 +27,7 @@
 ;; 不过这个特性Windows并不支持……又是被抛弃的一天
 (setq pixel-scroll-precision-mode t)
 ;; 滚轮速度
-;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+(setq mouse-wheel-scroll-amount '(3 ((shift) . hscroll) ((control) . text-scale)))
 ;; 滚轮开启水平滚动
 (setq mouse-wheel-tilt-scroll t)
 ;; Disable half-scroll when pointer out of screen
