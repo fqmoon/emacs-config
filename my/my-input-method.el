@@ -1,9 +1,7 @@
 ;; 设置编码环境，避免org-mode中文卡頓
-;; 在windows上设置utf8会使得一些程序乱码
-;; 比如find ripgrep等，它们都是用GBK编码的
-;; 所以在windows上关闭该功能
-(when (not (eq system-type 'windows-nt))
-  (set-language-environment "UTF-8"))
+;; windows上也设置utf8，虽然会使得一些老程序乱码，
+;; 但新的程序都是utf8了……还是支持新的更好
+(set-language-environment "UTF-8")
 
 ;; 内置输入法
 (use-package pyim
