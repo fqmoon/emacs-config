@@ -49,6 +49,7 @@
 (require 'my-ai)
 (require 'my-log)
 (require 'my-snippet)
+(require 'my-mouse)
 
 ;; TODO move to my-jump
 ;; (use-package better-jumper
