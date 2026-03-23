@@ -1,13 +1,9 @@
 1;;; org-mode config
 
-
-(defun fq-org-config ()
-  "Config org-mode."
-  ;; 不截断，也就是折行的意思
-  (setq truncate-lines nil)
-  ;; 在中英文之间插入空格的包
-  (use-package pangu-spacing
-    :ensure t)
+;; 在中英文之间插入空格的包
+(use-package pangu-spacing
+  :disabled
+  :ensure t
   ;; 在中英文之间加入空格
   (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)
   (pangu-spacing-mode t))
@@ -15,12 +11,12 @@
 (use-package org
   :ensure nil
   :defer t
-  :hook ((org-mode . fq-org-config))
   :bind (
 	 ("C-c l" . #'org-store-link)
 	 ("C-c a" . #'org-agenda)
 	 ("C-c c" . #'org-capture))
   :config
+  (setq truncate-lines nil)
   ;; org agenda 相关设置
   (setq org-directory "~/org/")
   ;; 注意这里并没有设置递归寻找，应该用capture功能将todo项引入
@@ -45,5 +41,25 @@
 	  ("j" "Journal" entry
 	   (file+datetree ,(expand-file-name "agenda/journal.org" org-directory))
 	   "* %?\n%a\n"))))
+
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory "~/org-roam/") ;; 默认笔记目录, 提前手动创建好
+  (org-roam-dailies-directory "daily/") ;; 默认日记目录, 上一目录的相对路径
+  (org-roam-db-gc-threshold most-positive-fixnum) ;; 提高性能
+  :bind (("C-c n f" . org-roam-node-find)
+         ;; 如果你的中文输入法会拦截非 ctrl 开头的快捷键, 也可考虑类似如下的设置
+         ;; ("C-c C-n C-f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ("C-c n l" . org-roam-buffer-toggle) ;; 显示后链窗口
+         ("C-c n u" . org-roam-ui-mode)) ;; 浏览器中可视化
+  :bind-keymap
+  ("C-c n d" . org-roam-dailies-map) ;; 日记菜单
+  :config
+  (require 'org-roam-dailies)  ;; 启用日记功能
+  (org-roam-db-autosync-mode)  ;; 自动同步数据库
+  )
 
 (provide 'my-org)
