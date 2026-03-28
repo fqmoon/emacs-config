@@ -13,36 +13,28 @@
   (interactive)
   (find-file user-init-file))
 
-(defun my/path-convert (path)
+(defun my-path-convert (path)
   "转换路径斜线为windows风格."
   (replace-regexp-in-string "/" "\\\\" path))
 
-(defun my/open-explorer ()
-  "打开当前文件所在文件夹."
+(defun explorer-program ()
+  "Get the explorer program."
+  (cond
+   ((running-in-wsl-p) "open"))
+  )
+
+(defun my-open-explorer ()
+  "Open explorer of current buffer."
   (interactive)
-  ;; TODO compitable with wsl, path wrong
-  (let ((dir (file-name-directory (or buffer-file-name
-				      default-directory)))
-	(dir-cmd
-	 (if (running-in-wsl-p)
-	     "explorer.exe"
-	   (cdr (assoc system-type
-		       '((windows-nt . "explorer.exe")
-			 (darwin . "open")
-			 (gnu/linux . "xdg-open"))))))
-	(path-prefix (if (running-in-wsl-p)
-			 "\\\\wsl.localhost\\Ubuntu-24.04"
-		         "")))
-    (cond ((eq dir-cmd nil)
-	   "Unknown system")
-	  (t
-	   (let ((cmd (concat dir-cmd
-			      " \""
-			      path-prefix
-			      (my/path-convert	dir)
-			      "\"")))
-	     (print cmd)
-	     (async-shell-command cmd))))))
+  (let* ((path (my-path-convert (expand-file-name ".")))
+	 (program
+	  (cond
+	   ((or (eq system-type 'windows-nt)
+		(running-in-wsl-p))
+	    "explorer.exe")
+	   (t
+	    "open"))))
+    (start-process "my-explorer" nil program path)))
 
 ;; magit是一个很好用的版本管理包
 ;; 但是在windows上卡得没法用，在该平台关闭该功能
