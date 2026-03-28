@@ -75,5 +75,4 @@
 	     (expand-file-name "third-party"
 			       (file-name-directory load-file-name)))
 (use-package consult-everything
-  :if (eq system-type 'windows-nt)
-  :after consult)
+  :if (eq system-type 'windows-nt))
