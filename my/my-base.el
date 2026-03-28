@@ -17,12 +17,6 @@
   "Convert PATH to win32 style."
   (replace-regexp-in-string "/" "\\\\" path))
 
-(defun explorer-program ()
-  "Get the explorer program."
-  (cond
-   ((running-in-wsl-p) "open"))
-  )
-
 (defun my-open-explorer ()
   "Open explorer of current buffer."
   (interactive)
@@ -35,6 +29,11 @@
 	   (t
 	    "open"))))
     (start-process "my-explorer" nil program path)))
+
+(defun my-open-ps ()
+  "Open powershell GUI."
+  (interactive)
+  (shell-command "start" "powershell"))
 
 ;; magit是一个很好用的版本管理包
 ;; 但是在windows上卡得没法用，在该平台关闭该功能
