@@ -69,3 +69,10 @@
     :ensure t
     :config
     (exec-path-from-shell-initialize)))
+
+(add-to-list 'load-path
+	     (expand-file-name "third-party"
+			       (file-name-directory load-file-name)))
+(use-package consult-everything
+  :if (eq system-type 'windows-nt)
+  :after consult)
