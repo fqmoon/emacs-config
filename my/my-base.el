@@ -13,8 +13,8 @@
   (interactive)
   (find-file user-init-file))
 
-(defun my-path-convert (path)
-  "转换路径斜线为windows风格."
+(defun convert-to-w32-path (path)
+  "Convert PATH to win32 style."
   (replace-regexp-in-string "/" "\\\\" path))
 
 (defun explorer-program ()
@@ -26,7 +26,7 @@
 (defun my-open-explorer ()
   "Open explorer of current buffer."
   (interactive)
-  (let* ((path (my-path-convert (expand-file-name ".")))
+  (let* ((path (convert-to-w32-path (expand-file-name ".")))
 	 (program
 	  (cond
 	   ((or (eq system-type 'windows-nt)
