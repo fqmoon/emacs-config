@@ -50,6 +50,7 @@
 (require 'my-log)
 (require 'my-snippet)
 (require 'my-mouse)
+(require 'my-term)
 
 ;; TODO move to my-jump
 ;; (use-package better-jumper
