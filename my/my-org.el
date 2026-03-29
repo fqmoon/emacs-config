@@ -16,7 +16,6 @@
 	 ("C-c a" . #'org-agenda)
 	 ("C-c c" . #'org-capture))
   :config
-  (setq truncate-lines nil)
   ;; org agenda 相关设置
   (setq org-directory "~/org/")
   ;; 注意这里并没有设置递归寻找，应该用capture功能将todo项引入

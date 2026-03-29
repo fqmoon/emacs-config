@@ -7,6 +7,12 @@
 ;;; base文件存放所有的基本配置，保证它们不出错
 ;;; 尽量少依赖于三方包
 
+;;; 换行相关配置
+(setq-default truncate-lines t)
+(setq-default word-wrap nil)
+(global-visual-line-mode -1)
+(add-hook 'text-mode-hook #'turn-on-visual-line-mode)
+
 ;; open config file
 (defun my/open-config ()
   "打开配置文件."

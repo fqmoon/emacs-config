@@ -1,8 +1,4 @@
 ;; 编程用的配置
-(add-hook 'prog-mode-hook
-	  #'(lambda ()
-	     (setq truncate-lines t)
-	     (setq word-wrap nil)))
 
 ;; eglot是Emacs-29内置的语言服务器
 ;; eglot可手动启用，先还是用LSP吧
