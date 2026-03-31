@@ -7,6 +7,10 @@
     :hook ((js-ts-mode . eglot-ensure)
 	   (python-ts-mode . eglot-ensure))
     ))
+(use-package consult-eglot
+  :ensure t
+  :after ((consult eglot))
+  :bind (:map global-map ("M-g M-g" . consult-eglot-symbols)))
 
 ;;; breadcrumb是一个用于eglot和tree-sitter的显示代码结构导航条的扩展包
 (use-package breadcrumb
