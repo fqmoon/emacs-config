@@ -8,6 +8,12 @@
 	   (python-ts-mode . eglot-ensure))
     ))
 
+;;; breadcrumb是一个用于eglot和tree-sitter的显示代码结构导航条的扩展包
+(use-package breadcrumb
+  :ensure t
+  :config
+  (breadcrumb-mode 1))
+
 (use-package eldoc
   :config
   (setq eldoc-idle-delay 0.1))
