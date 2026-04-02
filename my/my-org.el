@@ -15,7 +15,6 @@
 	 ("C-c l" . #'org-store-link)
 	 ("C-c a" . #'org-agenda)
 	 ("C-c c" . #'org-capture))
-  :hook ((org-mode-hook . org-indent-mode))
   :config
   ;; org agenda 相关设置
   (setq org-directory "~/org/")
@@ -40,7 +39,8 @@
 	  ;; 想法+感悟，就像日记嘛
 	  ("j" "Journal" entry
 	   (file+datetree ,(expand-file-name "agenda/journal.org" org-directory))
-	   "* %?\n%a\n"))))
+	   "* %?\n%a\n")))
+  (setq org-startup-indented t))
 
 (use-package org-roam
   :ensure t
