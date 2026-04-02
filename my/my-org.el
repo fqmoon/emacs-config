@@ -15,6 +15,7 @@
 	 ("C-c l" . #'org-store-link)
 	 ("C-c a" . #'org-agenda)
 	 ("C-c c" . #'org-capture))
+  :hook ((org-mode-hook . org-indent-mode))
   :config
   ;; org agenda 相关设置
   (setq org-directory "~/org/")
