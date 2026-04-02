@@ -13,6 +13,9 @@
 (global-visual-line-mode -1)
 (add-hook 'text-mode-hook #'turn-on-visual-line-mode)
 
+;; 可以用 C-x < 向右翻页
+(put 'scroll-left 'disabled nil)
+
 ;; open config file
 (defun my/open-config ()
   "打开配置文件."
