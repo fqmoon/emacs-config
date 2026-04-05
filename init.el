@@ -1,6 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 ;; 环境：Emacs 29.4-1 -> 30.1
 
+;; 增大GC内存范围，以空间换运行时间
+(setq gc-cons-threshold (* 256 1024 1024))
+
 ;; my config scripts
 (defvar my-path
   (expand-file-name "my"
