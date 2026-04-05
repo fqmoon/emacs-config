@@ -11,42 +11,43 @@
 (use-package org
   :ensure nil
   :defer t
-  :bind (
-	 ("C-c l" . #'org-store-link)
+  :bind (("C-c l" . #'org-store-link)
 	 ("C-c a" . #'org-agenda)
 	 ("C-c c" . #'org-capture))
-  :config
-  ;; org agenda 相关设置
-  (setq org-directory "~/org/")
-  ;; 注意这里并没有设置递归寻找，应该用capture功能将todo项引入
-  (setq org-agenda-files (list (expand-file-name "agenda/" org-directory)))
-  ;; 参考：https://www.zmonster.me/2018/02/28/org-mode-capture.html
+  :custom
+  (org-directory (file-truename "~/org/"))
+  (org-default-notes-file (expand-file-name "inbox.org" org-directory))
+  (org-agenda-files (list org-directory))
+  (org-startup-indented t)
+  ;; 优先使用id建立链接
+  (org-id-link-to-org-use-id t)
+  ;; 在切换到DONE时自动记录时间
+  (org-log-done 'time)
+  (org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "CANCEL(c)" "|" "DONE(d)")))
+  ;; 内容被折叠的尾部提示
+  (org-ellipsis " ▾")
   ;; 模板中替代词：
-  ;; - %U 未激活时间
+  ;; - %U 未激活时间（不会在agenda里面出现）
   ;; - %a 源链接
   ;; - %i 选中内容
   ;; - %? 最终光标停留位置
-  (setq org-capture-templates
-	`(
-	  ;; 任务列表
-	  ("t" "Todo" entry
-	   (file+headline ,(expand-file-name "agenda/todo.org" org-directory) "Tasks")
-	   "* TODO %?\n%U\n%a\n")
-	  ;; 草稿本，里面的记录需要归档
-	  ("d" "Draft" entry
-	   (file+headline ,(expand-file-name "agenda/draft.org" org-directory) "Draft")
-	   "* %?\n%U\n%a\n%i\n")
-	  ;; 想法+感悟，就像日记嘛
-	  ("j" "Journal" entry
-	   (file+datetree ,(expand-file-name "agenda/journal.org" org-directory))
-	   "* %?\n%a\n")))
-  (setq org-startup-indented t))
+  (org-capture-templates
+   '(("t" "Todo" entry (file "task.org")
+      "* TODO %?\n  时间：%T\n  来自：%a\n%i" :prepend t)
+     ("i" "Idea" entry (file "idea.org")
+      "* TODO %?\n  时间：%U\n  来自：%a\n%i")
+     ("d" "Draft" entry (file "draft.org")
+      "* TODO %? :IDEA:\n  时间：%U\n  来自：%a\n%i"))))
 
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory (file-truename "~/org-roam/"))
+  (org-roam-directory org-directory)
   (org-roam-dailies-directory "daily/")
+  ;; If you're using a vertical completion framework, you might want a more informative completion interface
+  (org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  ;; 将GC内存范围提升到100MB，提升性能
+  (gc-cons-threshold (* 100 1024 1024))
   :bind (("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
          ("C-c n c" . org-roam-capture)
@@ -55,8 +56,12 @@
 	 ("C-c n j" . org-roam-dailies-goto-date)
          ("C-c n u" . org-roam-ui-mode)) ;; 浏览器中可视化
   :config
-  ;; If you're using a vertical completion framework, you might want a more informative completion interface
-  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-  (org-roam-db-autosync-mode))
+  (org-roam-db-autosync-mode 1))
+
+(use-package org-modern
+  :ensure t
+  :after org
+  :config
+  (global-org-modern-mode 1))
 
 (provide 'my-org)
