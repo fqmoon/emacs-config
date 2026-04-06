@@ -9,6 +9,9 @@
   (expand-file-name "my"
 		    (file-name-directory load-file-name)))
 (add-to-list 'load-path my-path)
+(add-to-list 'load-path
+	     (expand-file-name "third-party"
+			       (file-name-directory load-file-name)))
 
 ;; 配置源
 (when (eq system-type 'windows-nt)
@@ -74,8 +77,5 @@
     :config
     (exec-path-from-shell-initialize)))
 
-(add-to-list 'load-path
-	     (expand-file-name "third-party"
-			       (file-name-directory load-file-name)))
 (use-package consult-everything
   :if (eq system-type 'windows-nt))

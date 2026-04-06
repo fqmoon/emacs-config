@@ -59,9 +59,13 @@
   (org-roam-db-autosync-mode 1))
 
 (use-package org-modern
+  :disabled
   :ensure t
   :after org
   :config
   (global-org-modern-mode 1))
+
+(require 'org-bars)
+(add-hook 'org-mode-hook #'org-bars-mode)
 
 (provide 'my-org)
