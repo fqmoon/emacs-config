@@ -11,7 +11,7 @@
 (setq-default truncate-lines t)
 (setq-default word-wrap nil)
 (global-visual-line-mode -1)
-(add-hook 'text-mode-hook #'turn-on-visual-line-mode)
+(add-hook 'text-mode-hook #'toggle-truncate-lines)
 
 ;; 可以用 C-x < 向右翻页
 (put 'scroll-left 'disabled nil)
