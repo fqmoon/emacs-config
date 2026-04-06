@@ -23,7 +23,7 @@
   (org-id-link-to-org-use-id t)
   ;; 在切换到DONE时自动记录时间
   (org-log-done 'time)
-  (org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "CANCEL(c)" "|" "DONE(d)")))
+  (org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)" "CANCEL(c)")))
   ;; 内容被折叠的尾部提示
   (org-ellipsis " ▾")
   ;; 模板中替代词：
