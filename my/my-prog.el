@@ -36,7 +36,9 @@
 (use-package flymake
   :hook (prog-mode . flymake-mode)
   :init
-  (add-to-list 'elisp-flymake-byte-compile-load-path my-path) ;; for flymake compiling
+  ;; for flymake compiling
+  (add-to-list 'elisp-flymake-byte-compile-load-path my-path)
+  (add-to-list 'elisp-flymake-byte-compile-load-path my-local-path)
   :config
   (global-set-key (kbd "M-g e") #'consult-flymake)
   )

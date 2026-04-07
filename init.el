@@ -12,6 +12,10 @@
 (add-to-list 'load-path
 	     (expand-file-name "third-party"
 			       (file-name-directory load-file-name)))
+(defvar my-local-path
+  (expand-file-name "local"
+		    (file-name-directory load-file-name)))
+(add-to-list 'load-path my-local-path)
 
 ;; 配置源
 (when (eq system-type 'windows-nt)
@@ -51,7 +55,7 @@
 (require 'my-search)
 (require 'my-proj)
 (require 'my-prog)
-(require 'my-org)
+;; (require 'my-org)
 (require 'my-ai)
 (require 'my-log)
 (require 'my-snippet)
@@ -79,3 +83,6 @@
 
 (use-package consult-everything
   :if (eq system-type 'windows-nt))
+
+;; 加载my-local，就算没有也不报错
+(require 'my-local nil t)
