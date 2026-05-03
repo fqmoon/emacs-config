@@ -41,7 +41,10 @@
   (add-to-list 'elisp-flymake-byte-compile-load-path my-local-path)
   :config
   (global-set-key (kbd "M-g e") #'consult-flymake)
-  )
+  ;; eglot会利用flymake在行号左侧显示指示符，导致布局错乱
+  ;; 在终端下关闭这个功能
+  (unless (display-graphic-p)
+    (setq flymake-margin-indicator-position nil)))
 ;; fix errors in code
 (use-package attrap
   :ensure t
