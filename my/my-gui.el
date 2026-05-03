@@ -21,7 +21,8 @@
 (my-gui--load-font)
 
 (defun my-gui-load-theme ()
-  (load-theme 'doom-one-light))
+  (unless custom-enabled-themes
+    (load-theme 'doom-one-light)))
 
 (use-package doom-themes
   :ensure t

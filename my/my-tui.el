@@ -3,9 +3,8 @@
 ;;; Code:
 
 (defun my-tui-load-theme ()
-  ;; (load-theme 'modus-vivendi)
-  
-  )
+ (unless custom-enabled-themes
+   (load-theme 'modus-vivendi)))
 
 (use-package modus-themes
   :ensure t
