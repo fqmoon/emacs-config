@@ -24,5 +24,9 @@
     (message "已在WSL2 TUI中禁用焦点事件")))
 (add-hook 'tty-setup-hook #'my-tui--tty-setup-func)
 
+;;; 让终端显示光标为方块
+(unless (display-graphic-p)
+  (send-string-to-terminal "\e[2 q"))
+
 (provide 'my-tui)
 ;;; my-tui.el ends here
