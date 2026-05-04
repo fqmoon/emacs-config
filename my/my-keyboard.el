@@ -143,9 +143,6 @@
 (define-key my/leader-map (kbd "F n") #'make-frame-command)
 (define-key my/leader-map (kbd "F k") #'delete-frame)
 
-(global-set-key (kbd "M-1") #'delete-other-windows)
-(global-set-key (kbd "M-0") #'delete-window)
-
 ;; 给C-SPC添加一个等效键，避免冲突
 (define-key key-translation-map (kbd "C-`") (kbd "C-SPC"))
 
