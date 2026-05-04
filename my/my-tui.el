@@ -36,5 +36,7 @@
   (message "[WARN] Not support true color! %s"
 	   "Please insert 'export COLORTERM=truecolor' into '.bashrc'."))
 
+(xterm-mouse-mode 1)
+
 (provide 'my-tui)
 ;;; my-tui.el ends here
